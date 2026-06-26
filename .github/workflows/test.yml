@@ -39,23 +39,26 @@ jobs:
                   if not f.endswith('.py'): continue
                   path = os.path.join(root, f)
                   try:
-                      tree = ast.parse(open(path).read())
+                      src = open(path).read()
+                      tree = ast.parse(src)
                   except:
                       continue
                   for node in ast.walk(tree):
-                      if isinstance(node, (ast.Import, ast.ImportFrom)):
-                          mods = []
-                          if isinstance(node, ast.Import):
-                              mods = [a.name.split('.')[0] for a in node.names]
-                          else:
-                              if node.module:
-                                  mods = [node.module.split('.')[0]]
-                          for m in mods:
+                      if isinstance(node, ast.ImportFrom):
+                          if node.level and node.level > 0:
+                              continue
+                          if node.module:
+                              m = node.module.split('.')[0]
+                              if m and m not in stdlib and not m.startswith('hipaasynth') and m not in ('__future__', 'fhir'):
+                                  external.append((path, m))
+                      elif isinstance(node, ast.Import):
+                          for a in node.names:
+                              m = a.name.split('.')[0]
                               if m and m not in stdlib and not m.startswith('hipaasynth') and m not in ('__future__', 'fhir'):
                                   external.append((path, m))
           if external:
               print('EXTERNAL DEPS FOUND:')
               for path, mod in external: print(f'  {path}: {mod}')
               exit(1)
-          print(f'Zero external dependencies: PASS')
+          print('Zero external dependencies: PASS')
           "
