@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "hipaasynth"
-version = "2.0.0"
+version = "1.0.0"
 description = "Synthetic health data fairness testing for invisible populations"
 readme = "README.md"
 license = {text = "AGPL-3.0-or-later"}
@@ -19,9 +19,11 @@ keywords = [
     "bias testing",
     "invisible populations",
     "fhir",
+    "clinical ai",
+    "fairness passport",
 ]
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Healthcare Industry",
     "Intended Audience :: Science/Research",
     "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
@@ -43,9 +45,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/hipaasynth/hipaasynth"
-Repository = "https://github.com/hipaasynth/hipaasynth"
-Issues = "https://github.com/hipaasynth/hipaasynth/issues"
+Homepage = "https://hipaasynth.com"
+Repository = "https://github.com/hipaasynth-svg/hipaasynth"
+Issues = "https://github.com/hipaasynth-svg/hipaasynth/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["hipaasynth"]
