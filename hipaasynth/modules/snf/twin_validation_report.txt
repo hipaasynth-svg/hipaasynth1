@@ -2,7 +2,7 @@
 ==============================================================
   HIPAASYNTH TWIN VALIDATION REPORT
 ==============================================================
-  Facility:     Trinity Homes
+  Facility:    FAKE Trinity Homes
   Seed:         42
   Anchor Hash:  ebb5a7e7ef15b092...
   Cohort Size:  105 synthetic residents
