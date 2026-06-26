@@ -35,13 +35,13 @@ Calibration sources:
   [S6] Bellani G et al. JAMA. 2016;315(8):788-800. (LUNG SAFE: ventilation modes)
   [S7] Rhoads CM et al. Chest. 2019;155(4):744-752. (Oliguria as sepsis predictor)
   [S8] Cecconi M et al. Intensive Care Med. 2014;40(12):1795-1815. (Fluid balance)
-  [S9] Promise Abegunde RN BSN. ICU Clinical Review 2026-04-22. HSX-SEPSIS-CALIB-001.
+  [S9] Internal calibration review, 2026-04-22.
        Respiratory context, urine output, fluid balance, deterioration realism,
        floor artefact reduction, contradictory bedside signals.
   [S10] O'Driscoll BR et al. Thorax. 2017;72(Suppl 1):ii1-ii90. (BTS O2 guidelines)
         GOLD 2024. Target SpO2 88-92% in COPD; avoid hypercapnic drive suppression.
 
-Changes in v1.0.2 (Abegunde 2026 [S9]):
+Changes in v1.0.2 (internal review 2026 [S9]):
   - Added oxygen_device, fio2_percent, ventilation_mode fields.
   - Added urine_output_ml_hr, fluid_input_6h_ml, fluid_balance_6h_ml fields.
   - Added deterioration_pattern field (gradual/sudden/stable_then_crash/fluctuating).
@@ -51,7 +51,7 @@ Changes in v1.0.2 (Abegunde 2026 [S9]):
     exact floor artefact.
   - observation_hook_version updated to sepsis_generator_v3_bedside.
 
-Changes in v1.0.3 (Abegunde 2026 [S9][S10]):
+Changes in v1.0.3 (internal review 2026 [S9][S10]):
   - ventilation_mode now populated for NRB (NRB / NRB_escalation_indicated when
     FiO2 >= 70%) and HFNC (HFNC), resolving gap flagged in bedside review.
   - Vasopressor probability tightened: severe oliguria (<0.3 mL/kg/hr) combined
@@ -303,7 +303,7 @@ def build_sepsis_observations(*, rng, demographics, anthropometrics, conditions,
     delayed_hypotension = rng.random() < delayed_hypotension_prob
 
     # ----------------------------------------------------------------
-    # DETERIORATION PATTERN — Abegunde 2026 [S9]
+    # DETERIORATION PATTERN — internal review 2026 [S9]
     # Real ICU sepsis deterioration is not smooth or predictable.
     # Four archetypes modeled: gradual, sudden, deceptive stability, fluctuating.
     # ----------------------------------------------------------------
@@ -426,7 +426,7 @@ def build_sepsis_observations(*, rng, demographics, anthropometrics, conditions,
     ams_only = altered_mental_status and afebrile and temp < 38.0
 
     # ----------------------------------------------------------------
-    # RESPIRATORY SUPPORT CONTEXT — Abegunde 2026 [S9]
+    # RESPIRATORY SUPPORT CONTEXT — internal review 2026 [S9]
     # SpO2 alone is clinically uninterpretable without support device and FiO2.
     # Sources: SSC 2021 [S4]; Frat 2015 [S5]; Bellani 2016 [S6].
     # ----------------------------------------------------------------
@@ -435,7 +435,7 @@ def build_sepsis_observations(*, rng, demographics, anthropometrics, conditions,
     )
 
     # ----------------------------------------------------------------
-    # FLUID BALANCE — Abegunde 2026 [S9]
+    # FLUID BALANCE — internal review 2026 [S9]
     # UO already computed above (before pressor logic). Fluid balance needs RNG.
     # Sources: Rhoads 2019 [S7]; Cecconi 2014 [S8]; SSC 2021 [S4].
     # ----------------------------------------------------------------
@@ -444,7 +444,7 @@ def build_sepsis_observations(*, rng, demographics, anthropometrics, conditions,
     )
 
     # ----------------------------------------------------------------
-    # CONTRADICTORY BEDSIDE SIGNALS — Abegunde 2026 [S9]
+    # CONTRADICTORY BEDSIDE SIGNALS — internal review 2026 [S9]
     # Real ICU sepsis often presents with conflicting data that forces
     # reassessment. These flags mark clinically coherent but contradictory
     # signal patterns that should not be "cleaned" by downstream models.

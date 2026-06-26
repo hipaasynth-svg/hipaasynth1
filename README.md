@@ -153,7 +153,7 @@ pip install -e '.[fhir]'
 | Polymorphic layer (7 forms + metrics) | Open | AGPL v3 |
 | CAP pipeline (Bitcoin-anchored certification) | Closed | Proprietary |
 | FDA-Ready tier logic | Closed | Proprietary |
-| Orinn evaluator, LLM harnesses | Closed | BSL 1.1 |
+| LLM evaluators, clinical harnesses | Closed | BSL 1.1 |
 
 The CAP pipeline — cryptographic hash chain, OpenTimestamps Bitcoin anchor, and live verification server — is proprietary. Vendors seeking a certified, independently verifiable FairnessPassport for regulatory submissions or hospital procurement use the CAP pipeline via [HipAAsynth.com](https://hipaasynth.com).
 
@@ -163,7 +163,7 @@ AGPL v3 means: any organization embedding this engine in a commercial product mu
 
 ## Research extensions
 
-Proprietary research extensions — including the Orinn evaluator, LLM harnesses, and clinical validation pipelines — are maintained in a private submodule under BSL 1.1. These are not open source and are not included in this repository.
+Proprietary research extensions — including LLM evaluators, clinical validation pipelines, and model harnesses — are maintained in a private submodule under BSL 1.1. These are not open source and are not included in this repository.
 
 ---
 
