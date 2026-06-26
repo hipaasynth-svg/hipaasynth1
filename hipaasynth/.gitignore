@@ -1,0 +1,37 @@
+__pycache__/
+*.pyc
+*.py[codz]
+.env
+.DS_Store
+output/
+output_*/
+cohort.json
+cohort.csv
+*.fhir
+cohorts/
+runs/
+packs/
+
+# Track Axis-6 audit results (final rerun JSONs/CSVs, primary sweep JSONs/CSVs,
+# recovery audits, and run logs) — these are the canonical evidence for OSF.
+!output/
+!output/axis6/
+!output/axis6/axis6_*.json
+!output/axis6/axis6_*.csv
+!output/axis6/rerun_audit_*.json
+!output/axis6/logs/
+!output/axis6/logs/sweep_2026*.log
+!output/axis6/logs/rerun_2026*.log
+!output/axis6/logs/rerun_dstroke_*.log
+!output/axis6/logs/sweep_daemon.log
+
+# But re-ignore everything else under output/ that the broad !output/ pulled in.
+output/axis6/cohort_*.json
+output/axis6/daemonize_*.py
+output/axis6/run_*.sh
+output/axis6/logs/sweep.pid
+output/axis6/cohorts/
+output/grid_quarantine/
+output/validation_report_*.md
+output/meta.json
+output/failure.csv

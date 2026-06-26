@@ -1,0 +1,133 @@
+{
+  "profile_name": "lagos_nigeria",
+  "display_name": "Lagos, Nigeria",
+  "population": 15400000,
+  "sources": {
+    "population": "Statista / World Population Review 2022. Lagos metropolitan population ~15.4 million. UN World Population Prospects 2024 Revision.",
+    "sex_ratio": "StatisticsTimes 2024 citing UN data. Nigeria sex ratio 102.3 males per 100 females → female proportion 49.4%. Applied to Lagos urban population.",
+    "ethnicity_Lagos": "World Population Review 2026. Lagos ethnic composition: Yoruba dominant (~60-65% Lagos State), Igbo (~15%), Hausa-Fulani (~10%), other groups ~15%. Engine maps all to 'black' (sub-Saharan African).",
+    "ethnicity_Nigeria": "World Population Review 2026. Nigeria national: Hausa-Fulani 30%, Yoruba 15.5%, Igbo 15.2%, other 39.3%. CIA World Factbook 2024.",
+    "age_distribution": "UN World Population Prospects 2024 Revision. Nigeria median age 18.3 years (very young population). ICU cohort age bands per Promise Abegunde spec: 55% age 65+, 45% age 18-64.",
+    "comorbidity_DM": "International Diabetes Federation (IDF) Diabetes Atlas 2021. Nigeria DM prevalence ~5.3% adults. Lagos urban higher ~7-9%.",
+    "comorbidity_HTN": "Adeloye D et al. Prevalence and awareness of hypertension in Nigeria. J Hypertens. 2020. Urban Nigeria HTN ~30-35%.",
+    "sepsis_ICU": "Murthy S et al. ICU capacity in low-income countries. PLoS One. 2015. Nigeria ICU beds ~0.07 per 100,000. Pneumonia leading sepsis source in sub-Saharan Africa.",
+    "sepsis_vitals": "Singer M et al. Sepsis-3. JAMA. 2016;315(8):801-810.",
+    "afebrile_presentation": "Gavazzi G, Krause KH. Ageing and infection. Lancet Infect Dis. 2002;2(11):659-666.",
+    "infection_source": "Rhee C et al. JAMA Intern Med. 2017;177(7):944-951. Pneumonia upweighted for sub-Saharan Africa urban context per WHO Africa region data."
+  },
+  "sex_ratio_female": 0.494,
+  "ethnicity_weights": {
+    "black": 1.0
+  },
+  "ethnicity_label_note": "Engine maps to 'black' for sub-Saharan African populations. Lagos is predominantly Yoruba (~60%), Igbo (~15%), Hausa (~10%), other Nigerian groups (~15%). No subgroup-specific clinical parameters available.",
+  "age_band_weights": [[18, 64, 0.45], [65, 90, 0.55]],
+  "rural": false,
+  "region": "Sub-Saharan Africa",
+  "country": "Nigeria",
+  "city": "Lagos",
+  "calibration_notes": [
+    "Ethnicity mapped to 'black' — engine has no Yoruba/Igbo/Hausa subgroup clinical parameters. No published Lagos-specific subgroup sepsis data found.",
+    "DM prevalence in urban Lagos (~7-9%) higher than US baseline. Engine does not yet apply region-specific comorbidity prevalence adjustments — documented gap.",
+    "HTN prevalence urban Nigeria ~30-35% (Adeloye 2020) — lower than US baseline used in engine. Documented gap.",
+    "Afebrile and AMS-only presentation rates calibrated to age/comorbidity only — no Lagos-specific sepsis presentation data in published literature.",
+    "Pneumonia upweighted as primary infection source consistent with sub-Saharan Africa ICU sepsis epidemiology.",
+    "Time-to-deterioration fields modeled only — no Lagos ICU-specific calibration data available.",
+    "ICU infrastructure in Lagos is severely limited (Murthy 2015) — cohort represents a modeled ICU population, not a population-representative sample."
+  ],
+  "continuous_vars": {
+    "_source": "IDF Diabetes Atlas 2021; Adeloye 2020 Nigeria HTN data; WHO Africa region NCD surveillance; NHANES reference for lab norms.",
+    "hba1c": {
+      "observed_mean": 6.1,
+      "observed_std": 1.8,
+      "unit": "%",
+      "source": "IDF Atlas 2021; urban Lagos DM prevalence ~7-9%; lower mean than US due to lower overall DM burden"
+    },
+    "bmi": {
+      "observed_mean": 25.5,
+      "observed_std": 5.8,
+      "unit": "kg/m2",
+      "source": "WHO Africa NCD surveillance; lower mean BMI in sub-Saharan Africa vs US/European populations"
+    },
+    "systolic_bp": {
+      "observed_mean": 130.0,
+      "observed_std": 23.5,
+      "unit": "mmHg",
+      "source": "Adeloye 2020; urban Nigeria HTN ~30-35% prevalence; higher systolic in ICU-presenting patients"
+    },
+    "creatinine": {
+      "observed_mean": 1.05,
+      "observed_std": 0.55,
+      "unit": "mg/dL",
+      "source": "NHANES reference adjusted for Africa region; limited access to dialysis drives higher observed creatinine at ICU presentation; KDIGO 2022"
+    },
+    "egfr": {
+      "observed_mean": 70.0,
+      "observed_std": 27.0,
+      "unit": "mL/min/1.73m2",
+      "source": "CKD-EPI 2021; ICU-presenting patients in resource-limited settings have higher CKD burden at presentation"
+    }
+  },
+  "temporal_trends": {
+    "_source": "IDF Diabetes Atlas 2021-2030 projections; WHO AFR NCD trend data; UN Population Prospects 2024",
+    "6": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.0044,
+        "hypertension": 0.0056,
+        "ckd": 0.0028,
+        "_unit": "absolute prevalence change (fraction) at 6-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.0083,
+        "statins": 0.0111,
+        "ace_inhibitors": 0.0083,
+        "_unit": "relative change fraction at 6-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.0017,
+        "comorbidity_index_delta": 0.0056,
+        "_unit": "absolute change at 6-month drift interval"
+      },
+      "source": "IDF Atlas 2021; WHO AFR NCD trends; UN Population Prospects 2024"
+    },
+    "12": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.0089,
+        "hypertension": 0.011,
+        "ckd": 0.0056,
+        "_unit": "absolute prevalence change (fraction) at 12-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.0167,
+        "statins": 0.0222,
+        "ace_inhibitors": 0.0167,
+        "_unit": "relative change fraction at 12-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.0033,
+        "comorbidity_index_delta": 0.011,
+        "_unit": "absolute change at 12-month drift interval"
+      },
+      "source": "IDF Atlas 2021; WHO AFR NCD trends; UN Population Prospects 2024"
+    },
+    "18": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.013,
+        "hypertension": 0.017,
+        "ckd": 0.0083,
+        "_unit": "absolute prevalence change (fraction) at 18-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.025,
+        "statins": 0.033,
+        "ace_inhibitors": 0.025,
+        "_unit": "relative change fraction at 18-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.005,
+        "comorbidity_index_delta": 0.017,
+        "_unit": "absolute change at 18-month drift interval"
+      },
+      "source": "IDF Atlas 2021; WHO AFR NCD trends; UN Population Prospects 2024"
+    }
+  }
+}

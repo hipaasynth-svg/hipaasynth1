@@ -1,0 +1,78 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hipaasynth"
+version = "2.0.0"
+description = "Synthetic health data fairness testing for invisible populations"
+readme = "README.md"
+license = {text = "AGPL-3.0-or-later"}
+requires-python = ">=3.11"
+authors = [
+    {name = "HipAAsynth Contributors"},
+]
+keywords = [
+    "synthetic data",
+    "health ai",
+    "fairness",
+    "bias testing",
+    "invisible populations",
+    "fhir",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Healthcare Industry",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Topic :: Software Development :: Testing",
+]
+
+[project.optional-dependencies]
+fhir = ["fhir.resources>=7.0"]
+dev = [
+    "pytest>=8.0",
+    "black>=24.0",
+    "ruff>=0.4.0",
+    "mypy>=1.9",
+]
+
+[project.urls]
+Homepage = "https://github.com/hipaasynth/hipaasynth"
+Repository = "https://github.com/hipaasynth/hipaasynth"
+Issues = "https://github.com/hipaasynth/hipaasynth/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["hipaasynth"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/hipaasynth",
+    "/tests",
+    "/examples",
+    "/README.md",
+    "/LICENSE.md",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true

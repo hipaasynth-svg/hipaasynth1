@@ -1,0 +1,112 @@
+{
+  "profile_name": "us_default",
+  "location_type": "national",
+  "source": { "dataset": "ACS_5_year", "year": "2024" },
+  "age_bands": [
+    {"min": 18, "max": 24, "weight": 0.12},
+    {"min": 25, "max": 44, "weight": 0.33},
+    {"min": 45, "max": 64, "weight": 0.33},
+    {"min": 65, "max": 90, "weight": 0.22}
+  ],
+  "sex_ratio_female": 0.51,
+  "ethnicity_weights": {
+    "white": 0.60, "black": 0.12, "hispanic": 0.18,
+    "asian": 0.06, "native": 0.02, "other": 0.02
+  },
+  "continuous_vars": {
+    "_source": "NHANES 2017-2020. US national reference values.",
+    "hba1c": {
+      "observed_mean": 5.7,
+      "observed_std": 1.5,
+      "unit": "%",
+      "source": "NHANES 2017-2020; CDC National Diabetes Statistics Report 2024"
+    },
+    "bmi": {
+      "observed_mean": 29.9,
+      "observed_std": 7.5,
+      "unit": "kg/m2",
+      "source": "NHANES 2017-2020; CDC BRFSS 2022 national obesity prevalence 41.9%"
+    },
+    "systolic_bp": {
+      "observed_mean": 122.0,
+      "observed_std": 18.5,
+      "unit": "mmHg",
+      "source": "NHANES 2017-2020; AHA 2023 hypertension prevalence 48.1% US adults"
+    },
+    "creatinine": {
+      "observed_mean": 0.98,
+      "observed_std": 0.42,
+      "unit": "mg/dL",
+      "source": "NHANES 2017-2020 CKD surveillance; KDIGO 2022 reference ranges"
+    },
+    "egfr": {
+      "observed_mean": 78.0,
+      "observed_std": 24.0,
+      "unit": "mL/min/1.73m2",
+      "source": "NHANES 2017-2020 eGFR distribution; CKD-EPI 2021 equation"
+    }
+  },
+  "temporal_trends": {
+    "_source": "CDC BRFSS trend data 2018-2024; CMS Part D utilization trends; US Census Bureau age projections",
+    "6": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.0033,
+        "hypertension": 0.0044,
+        "ckd": 0.0022,
+        "_unit": "absolute prevalence change (fraction) at 6-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.0222,
+        "statins": 0.0167,
+        "ace_inhibitors": 0.0111,
+        "_unit": "relative change fraction at 6-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.0044,
+        "comorbidity_index_delta": 0.0056,
+        "_unit": "absolute change at 6-month drift interval"
+      },
+      "source": "CDC Diabetes Surveillance 2024; CMS Drug Utilization 2024; US Census 2024 projections"
+    },
+    "12": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.0067,
+        "hypertension": 0.0089,
+        "ckd": 0.0044,
+        "_unit": "absolute prevalence change (fraction) at 12-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.0444,
+        "statins": 0.0333,
+        "ace_inhibitors": 0.0222,
+        "_unit": "relative change fraction at 12-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.0089,
+        "comorbidity_index_delta": 0.0111,
+        "_unit": "absolute change at 12-month drift interval"
+      },
+      "source": "CDC Diabetes Surveillance 2024; CMS Drug Utilization 2024; US Census 2024 projections"
+    },
+    "18": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.010,
+        "hypertension": 0.013,
+        "ckd": 0.007,
+        "_unit": "absolute prevalence change (fraction) at 18-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.067,
+        "statins": 0.050,
+        "ace_inhibitors": 0.033,
+        "_unit": "relative change fraction at 18-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.013,
+        "comorbidity_index_delta": 0.017,
+        "_unit": "absolute change at 18-month drift interval"
+      },
+      "source": "CDC Diabetes Surveillance 2024; CMS Drug Utilization 2024; US Census 2024 projections"
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "profile_name": "nd_tribal_standing_rock",
+  "display_name": "Standing Rock Sioux Nation, ND/SD",
+  "population": 8250,
+  "sources": {
+    "population": "U.S. Census Bureau. ACS 2020-2024 5-Year Estimates. Standing Rock Reservation total population ~8,250.",
+    "ethnicity": "U.S. Census Bureau ACS 2020-2024. Standing Rock Reservation: American Indian/Alaska Native >85% of population.",
+    "sex_ratio": "U.S. Census Bureau ACS 2020-2024. Female 51.2% on Standing Rock Reservation.",
+    "diabetes_prevalence": "Dai J et al. Trends in anti-diabetic medication use among AI/AN Peoples 2009-2013. Diabetes Obes Metab. 2024;27(1):328-337. doi:10.1111/dom.16021. AI/AN diabetes prevalence 13.6% nationally (2019-2021), nearly twice non-Hispanic White adults (6.9%).",
+    "hypertension_prevalence": "Jolly SE et al. Prevalence of Hypertension in Western Alaska Native People: WATCH Study. J Clin Hypertens. 2015;17(10):812-818. doi:10.1111/jch.12483. Strong Heart Study North/South Dakota AI/AN HTN prevalence ~27% at baseline.",
+    "dm_htn_comorbidity": "Walls ML et al. Together Overcoming Diabetes Study. J Diabetes Res. 2025. doi:10.1155/jdr/6591307. 77.9% of AI/AN adults with T2D also have hypertension across 14 IHS units.",
+    "ckd_comorbidity": "Nephrology Mini Orals. Nephrology. 2021;26(S2):17-32. doi:10.1111/nep.13930. DM+HTN strongly associated with CKD in indigenous communities.",
+    "sepsis_social_determinants": "Ardabili AK et al. Social Determinants of Sepsis Mortality in the US. World Med Health Policy. 2025;17(4):823-830. doi:10.1002/wmh3.70043. Higher ADI scores and lower income associated with increased sepsis mortality.",
+    "sepsis_vitals": "Singer M et al. Sepsis-3. JAMA. 2016;315(8):801-810. doi:10.1001/jama.2016.0287.",
+    "afebrile_elderly": "Gavazzi G, Krause KH. Ageing and infection. Lancet Infect Dis. 2002;2(11):659-666. doi:10.1016/S1473-3099(02)00437-1.",
+    "ihs_workforce": "Brockie T et al. Indigenous nursing leadership. J Clin Nurs. 2021;32(3-4):610-624. doi:10.1111/jocn.15801. IHS nurse vacancy rate 23-40%. Context for access limitations."
+  },
+  "sex_ratio_female": 0.512,
+  "ethnicity_weights": {
+    "native": 0.87,
+    "white": 0.08,
+    "other": 0.05
+  },
+  "age_band_weights": [[18, 64, 0.55], [65, 90, 0.45]],
+  "rural": true,
+  "region": "Northern Plains",
+  "country": "USA",
+  "state": "North Dakota / South Dakota",
+  "tribe": "Standing Rock Sioux Nation",
+  "ihs_service_unit": "Standing Rock Service Unit",
+  "calibration_notes": [
+    "AI/AN DM prevalence 13.6% nationally — significantly higher than US average of ~8.7% (ADA 2024). Engine uses US-baseline comorbidity generator; AI/AN-specific prevalence not yet applied as regional adjustment. Documented gap.",
+    "HTN prevalence ~27% in ND AI/AN (Strong Heart Study baseline) vs US average ~45% (AHA 2023). This population has LOWER HTN than US average but HIGHER diabetes burden.",
+    "77.9% of AI/AN adults with T2D also have HTN — when DM is present, HTN co-occurrence is extremely high.",
+    "CKD elevated due to high DM+HTN comorbidity burden in this population.",
+    "Rural flag = True. Pneumonia weighted higher as sepsis infection source (rural presentation pattern).",
+    "IHS access limitations: nurse vacancy rate 23-40%. This cohort represents patients who did reach ICU care — not population-representative."
+  ],
+  "continuous_vars": {
+    "_source": "IHS Trends in Indian Health 2014-2015; NHANES AI/AN oversampling; Strong Heart Study ND/SD data.",
+    "hba1c": {
+      "observed_mean": 7.1,
+      "observed_std": 2.2,
+      "unit": "%",
+      "source": "IHS data; AI/AN DM prevalence 13.6% (Dai 2024); higher HbA1c burden vs US mean"
+    },
+    "bmi": {
+      "observed_mean": 31.8,
+      "observed_std": 7.9,
+      "unit": "kg/m2",
+      "source": "BRFSS AI/AN oversampling; Strong Heart Study. Higher obesity burden in AI/AN populations."
+    },
+    "systolic_bp": {
+      "observed_mean": 125.0,
+      "observed_std": 21.0,
+      "unit": "mmHg",
+      "source": "Strong Heart Study ND/SD AI/AN; Jolly 2015 WATCH Study; HTN estimated 27-40% AI/AN"
+    },
+    "creatinine": {
+      "observed_mean": 1.12,
+      "observed_std": 0.62,
+      "unit": "mg/dL",
+      "source": "NHANES AI/AN CKD data; higher CKD burden from DM+HTN comorbidity; Nephrology 2021"
+    },
+    "egfr": {
+      "observed_mean": 66.0,
+      "observed_std": 27.5,
+      "unit": "mL/min/1.73m2",
+      "source": "IHS CKD surveillance; CKD-EPI 2021; elevated CKD stage 3+ in AI/AN DM+HTN population"
+    }
+  },
+  "temporal_trends": {
+    "_source": "IHS trend data; CDC AI/AN surveillance; CMS Part D AI/AN utilization; BRFSS AI/AN oversampling",
+    "6": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.0050,
+        "hypertension": 0.0044,
+        "ckd": 0.0033,
+        "_unit": "absolute prevalence change (fraction) at 6-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.0167,
+        "statins": 0.0139,
+        "ace_inhibitors": 0.0111,
+        "_unit": "relative change fraction at 6-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.0028,
+        "comorbidity_index_delta": 0.0067,
+        "_unit": "absolute change at 6-month drift interval"
+      },
+      "source": "IHS trends 2024; CDC AI/AN Diabetes Surveillance; BRFSS AI/AN 2022"
+    },
+    "12": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.010,
+        "hypertension": 0.0089,
+        "ckd": 0.0067,
+        "_unit": "absolute prevalence change (fraction) at 12-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.0333,
+        "statins": 0.0278,
+        "ace_inhibitors": 0.0222,
+        "_unit": "relative change fraction at 12-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.0056,
+        "comorbidity_index_delta": 0.0133,
+        "_unit": "absolute change at 12-month drift interval"
+      },
+      "source": "IHS trends 2024; CDC AI/AN Diabetes Surveillance; BRFSS AI/AN 2022"
+    },
+    "18": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.015,
+        "hypertension": 0.013,
+        "ckd": 0.010,
+        "_unit": "absolute prevalence change (fraction) at 18-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.050,
+        "statins": 0.042,
+        "ace_inhibitors": 0.033,
+        "_unit": "relative change fraction at 18-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.0083,
+        "comorbidity_index_delta": 0.020,
+        "_unit": "absolute change at 18-month drift interval"
+      },
+      "source": "IHS trends 2024; CDC AI/AN Diabetes Surveillance; BRFSS AI/AN 2022"
+    }
+  }
+}

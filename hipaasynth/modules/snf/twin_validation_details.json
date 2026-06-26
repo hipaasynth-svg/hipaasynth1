@@ -1,0 +1,181 @@
+{
+  "seed": 42,
+  "anchor_hash": "ebb5a7e7ef15b09266d60104d1dc3be41725c3bd3f91c552151423aae1c8c029",
+  "cohort_size": 105,
+  "all_pass": true,
+  "pass_count": 19,
+  "total_measures": 19,
+  "measures": [
+    {
+      "measure": "ADL Independence",
+      "synthetic": 0.8857142857142857,
+      "real_cms": 0.872,
+      "delta": 0.013714285714285679,
+      "status": "PASS",
+      "type": "rate",
+      "source": "MDS QM N0300, CMS Five-Star 2023"
+    },
+    {
+      "measure": "Flu Vaccination",
+      "synthetic": 0.9809523809523809,
+      "real_cms": 0.991,
+      "delta": -0.010047619047619083,
+      "status": "PASS",
+      "type": "rate",
+      "source": "MDS QM S_041_01, CMS 2023"
+    },
+    {
+      "measure": "Payer: Medicare",
+      "synthetic": 0.3523809523809524,
+      "real_cms": 0.35,
+      "delta": 0.002380952380952428,
+      "status": "PASS",
+      "type": "match",
+      "source": "CMS CASPER/OSCAR facility data 2023"
+    },
+    {
+      "measure": "Payer: Medicaid",
+      "synthetic": 0.5333333333333333,
+      "real_cms": 0.55,
+      "delta": -0.01666666666666672,
+      "status": "PASS",
+      "type": "match",
+      "source": "CMS CASPER/OSCAR facility data 2023"
+    },
+    {
+      "measure": "Payer: Private Pay",
+      "synthetic": 0.11428571428571428,
+      "real_cms": 0.1,
+      "delta": 0.014285714285714277,
+      "status": "PASS",
+      "type": "match",
+      "source": "CMS CASPER/OSCAR facility data 2023"
+    },
+    {
+      "measure": "Dementia Prevalence",
+      "synthetic": 0.29523809523809524,
+      "real_cms": 0.28,
+      "delta": 0.015238095238095217,
+      "status": "PASS",
+      "type": "contains",
+      "source": "MDS Section I, CMS 2023 national avg"
+    },
+    {
+      "measure": "Female Residents",
+      "synthetic": 0.638095238095238,
+      "real_cms": 0.65,
+      "delta": -0.011904761904761973,
+      "status": "PASS",
+      "type": "match",
+      "source": "MDS demographics, CMS CASPER 2023"
+    },
+    {
+      "measure": "Avg Resident Age",
+      "synthetic": 83.39047619047619,
+      "real_cms": 82.0,
+      "delta": 1.3904761904761926,
+      "status": "PASS",
+      "type": "mean",
+      "source": "NHANES/MDS age distribution, CMS 2023"
+    },
+    {
+      "measure": "Memory Care Ward",
+      "synthetic": 0.3238095238095238,
+      "real_cms": 0.28,
+      "delta": 0.0438095238095238,
+      "status": "PASS",
+      "type": "match",
+      "source": "CMS facility ward composition, 2023"
+    },
+    {
+      "measure": "Pressure Ulcer",
+      "synthetic": 0.06666666666666667,
+      "real_cms": 0.058,
+      "delta": 0.008666666666666663,
+      "status": "PASS",
+      "type": "rate",
+      "source": "MDS QM: new/worsening pressure ulcers, CMS 2023"
+    },
+    {
+      "measure": "Fall in Last 30 Days",
+      "synthetic": 0.047619047619047616,
+      "real_cms": 0.09,
+      "delta": -0.04238095238095238,
+      "status": "PASS",
+      "type": "rate",
+      "source": "MDS Section J: falls with major injury, CMS 2023"
+    },
+    {
+      "measure": "Antipsychotic Use",
+      "synthetic": 0.19047619047619047,
+      "real_cms": 0.148,
+      "delta": 0.04247619047619047,
+      "status": "PASS",
+      "type": "rate",
+      "source": "MDS QM: antipsychotic use, CMS Five-Star 2023"
+    },
+    {
+      "measure": "Pain Managed",
+      "synthetic": 0.9428571428571428,
+      "real_cms": 0.93,
+      "delta": 0.01285714285714279,
+      "status": "PASS",
+      "type": "rate",
+      "source": "MDS QM: pain assessment/management, CMS 2023"
+    },
+    {
+      "measure": "Catheter Use",
+      "synthetic": 0.0,
+      "real_cms": 0.02,
+      "delta": -0.02,
+      "status": "PASS",
+      "type": "rate",
+      "source": "MDS QM: indwelling catheter, CMS 2023"
+    },
+    {
+      "measure": "Restraint Use",
+      "synthetic": 0.0,
+      "real_cms": 0.005,
+      "delta": -0.005,
+      "status": "PASS",
+      "type": "rate",
+      "source": "MDS QM: physical restraints, CMS 2023"
+    },
+    {
+      "measure": "Depression Screen Positive",
+      "synthetic": 0.24761904761904763,
+      "real_cms": 0.2,
+      "delta": 0.047619047619047616,
+      "status": "PASS",
+      "type": "rate",
+      "source": "MDS PHQ-9 positive screen, CMS 2023"
+    },
+    {
+      "measure": "ED Transfer Risk",
+      "synthetic": 0.05714285714285714,
+      "real_cms": 0.08,
+      "delta": -0.02285714285714286,
+      "status": "PASS",
+      "type": "rate",
+      "source": "Claims-based QM: ED visits, CMS 2023"
+    },
+    {
+      "measure": "Pneumonia Vaccination",
+      "synthetic": 0.9238095238095239,
+      "real_cms": 0.94,
+      "delta": -0.01619047619047609,
+      "status": "PASS",
+      "type": "rate",
+      "source": "MDS QM: pneumococcal vaccination, CMS 2023"
+    },
+    {
+      "measure": "Weight Loss Risk",
+      "synthetic": 0.08571428571428572,
+      "real_cms": 0.06,
+      "delta": 0.025714285714285717,
+      "status": "PASS",
+      "type": "rate",
+      "source": "MDS QM: significant weight loss, CMS 2023"
+    }
+  ]
+}
