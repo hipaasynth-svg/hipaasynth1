@@ -31,6 +31,7 @@ CONDITION_LAB_MODIFIERS = {
     ("type2_diabetes", "Glucose"): "diabetic_glucose",
     ("chronic_kidney_disease", "Creatinine"): (1.05, 1.25),
     ("hyperlipidemia", "LDL"): (160.0, 260.0),
+    ("sepsis", "WBC"): (11.0, 21.0),
 }
 
 _REFERENCE_DATE = datetime(2024, 6, 15)

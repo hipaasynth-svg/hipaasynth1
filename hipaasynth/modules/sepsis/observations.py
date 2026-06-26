@@ -405,7 +405,7 @@ def build_sepsis_observations(*, rng, demographics, anthropometrics, conditions,
     severe_oliguria = urine_output_ml_hr < (0.3 * weight_kg)
     dm_htn_ckd = diabetes and hypertension and ckd
     pressor_probability = min(
-        0.18
+        0.03
         + 0.60 * severity
         + (0.10 if lactate_initial >= 2.0 else 0.0)
         + (0.18 if (severe_oliguria and lactate_initial >= 2.0) else 0.0)

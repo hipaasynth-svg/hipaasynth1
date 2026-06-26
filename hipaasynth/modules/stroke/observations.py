@@ -179,11 +179,14 @@ def build_stroke_observations(
     profile = getattr(cfg, '_resolved_profile', None) or {}
     if isinstance(profile, dict):
         profile_name = str(profile.get('profile_name', '')).lower()
-        profile_rural = bool(profile.get('rural', False))
     else:
         profile_name = ''
-        profile_rural = False
-    rural = profile_rural  # driven by profile JSON rural flag only
+    if 'rural' in profile_name:
+        rural = True
+    elif profile_name:
+        rural = False
+    else:
+        rural = rng.random() < 0.17
 
     has_stroke   = (getattr(cfg, 'required_condition', None) == 'stroke') \
                    or ('stroke' in names) or ('ischemic_stroke' in names)
@@ -271,15 +274,15 @@ def build_stroke_observations(
     # Ischemic median 4 (IQR 2-10) — Winder 2023 [2]
     # Hemorrhagic: higher severity distribution — ICH mean NIHSS ~13-15 [11]
     #   Hemorrhagic thresholds: 25% mild / 40% moderate / 35% severe
-    #   Ischemic thresholds:    82% mild / 13% moderate /  5% severe
+    #   Ischemic thresholds:    50% mild / 13% moderate / 37% severe
     # TIA: overrides to NIHSS 0-2 regardless of roll.
     # ----------------------------------------------------------------
     if stroke_type == 'hemorrhagic':
         mild_thresh = 0.25
         mod_thresh  = 0.65
     else:
-        mild_thresh = 0.82
-        mod_thresh  = 0.95
+        mild_thresh = 0.50
+        mod_thresh  = 0.63
 
     roll = rng.random()
     if roll < mild_thresh:
@@ -338,7 +341,7 @@ def build_stroke_observations(
     # Both are absolute tPA contraindications (AHA/ASA 2019 [7]).
     # ----------------------------------------------------------------
     prior_stroke  = rng.random() < (0.10 + (0.05 if age >= 65 else 0))
-    anticoagulant = rng.random() < (0.08 + (0.06 if afib_modeled else 0))
+    anticoagulant = rng.random() < (0.05 + (0.60 if afib_modeled else 0))
     prior_ich     = rng.random() < (0.025 + (0.015 if age >= 65 else 0.0))
     recent_surgery = rng.random() < (0.020 + (0.010 if age >= 65 else 0.0))
 
