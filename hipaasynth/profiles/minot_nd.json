@@ -1,0 +1,120 @@
+{
+  "profile_name": "minot_nd",
+  "rural": true,
+  "actual_population": 47440,
+  "source": {
+    "dataset": "U.S. Census Bureau QuickFacts / ACS 2020-2024",
+    "year": "2025 estimate for population; 2020-2024 for demographic percentages"
+  },
+  "sex_ratio_female": 0.478,
+  "ethnicity_weights": {
+    "white": 0.795,
+    "black": 0.055,
+    "hispanic": 0.079,
+    "asian": 0.021,
+    "native": 0.023,
+    "other": 0.027
+  },
+  "age_bands": [
+    { "min": 18, "max": 24, "weight": 0.14 },
+    { "min": 25, "max": 44, "weight": 0.34 },
+    { "min": 45, "max": 64, "weight": 0.26 },
+    { "min": 65, "max": 90, "weight": 0.26 }
+  ],
+  "continuous_vars": {
+    "_source": "NHANES 2017-2020 / BRFSS North Dakota 2022. Rural ND adjustment applied.",
+    "hba1c": {
+      "observed_mean": 5.8,
+      "observed_std": 1.6,
+      "unit": "%",
+      "source": "BRFSS ND 2022; rural DM burden slightly elevated vs US mean"
+    },
+    "bmi": {
+      "observed_mean": 30.2,
+      "observed_std": 7.4,
+      "unit": "kg/m2",
+      "source": "BRFSS ND 2022; rural ND obesity prevalence 34.1%"
+    },
+    "systolic_bp": {
+      "observed_mean": 123.0,
+      "observed_std": 19.0,
+      "unit": "mmHg",
+      "source": "NHANES 2017-2020 rural stratum; BRFSS ND hypertension 32.3%"
+    },
+    "creatinine": {
+      "observed_mean": 0.99,
+      "observed_std": 0.43,
+      "unit": "mg/dL",
+      "source": "NHANES 2017-2020 CKD surveillance; KDIGO 2022 reference ranges"
+    },
+    "egfr": {
+      "observed_mean": 77.0,
+      "observed_std": 23.5,
+      "unit": "mL/min/1.73m2",
+      "source": "NHANES 2017-2020 eGFR distribution; CKD-EPI 2021 equation"
+    }
+  },
+  "temporal_trends": {
+    "_source": "CDC BRFSS trend data 2018-2024; CMS Part D utilization trends; US Census Bureau age projections",
+    "6": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.0033,
+        "hypertension": 0.0044,
+        "ckd": 0.0022,
+        "_unit": "absolute prevalence change (fraction) at 6-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.0222,
+        "statins": 0.0167,
+        "ace_inhibitors": 0.0111,
+        "_unit": "relative change fraction at 6-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.0044,
+        "comorbidity_index_delta": 0.0056,
+        "_unit": "absolute change at 6-month drift interval"
+      },
+      "source": "CDC Diabetes Surveillance 2024; CMS Drug Utilization 2024; US Census 2024 projections"
+    },
+    "12": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.0067,
+        "hypertension": 0.0089,
+        "ckd": 0.0044,
+        "_unit": "absolute prevalence change (fraction) at 12-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.0444,
+        "statins": 0.0333,
+        "ace_inhibitors": 0.0222,
+        "_unit": "relative change fraction at 12-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.0089,
+        "comorbidity_index_delta": 0.0111,
+        "_unit": "absolute change at 12-month drift interval"
+      },
+      "source": "CDC Diabetes Surveillance 2024; CMS Drug Utilization 2024; US Census 2024 projections"
+    },
+    "18": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.010,
+        "hypertension": 0.013,
+        "ckd": 0.007,
+        "_unit": "absolute prevalence change (fraction) at 18-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.067,
+        "statins": 0.050,
+        "ace_inhibitors": 0.033,
+        "_unit": "relative change fraction at 18-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.013,
+        "comorbidity_index_delta": 0.017,
+        "_unit": "absolute change at 18-month drift interval"
+      },
+      "source": "CDC Diabetes Surveillance 2024; CMS Drug Utilization 2024; US Census 2024 projections"
+    }
+  }
+}

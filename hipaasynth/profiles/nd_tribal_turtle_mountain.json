@@ -1,0 +1,135 @@
+{
+  "profile_name": "nd_tribal_turtle_mountain",
+  "display_name": "Turtle Mountain Band of Chippewa, ND",
+  "population": 7280,
+  "sources": {
+    "population": "U.S. Census Bureau. ACS 2020-2024 5-Year Estimates. Turtle Mountain Reservation total population ~7,280.",
+    "ethnicity": "U.S. Census Bureau ACS 2020-2024. Turtle Mountain Reservation: American Indian/Alaska Native >80% of population.",
+    "sex_ratio": "U.S. Census Bureau ACS 2020-2024. Female 52.1% on Turtle Mountain Reservation.",
+    "diabetes_prevalence": "Dai J et al. Diabetes Obes Metab. 2024;27(1):328-337. doi:10.1111/dom.16021. AI/AN diabetes prevalence 13.6% nationally.",
+    "hypertension_prevalence": "Jolly SE et al. J Clin Hypertens. 2015;17(10):812-818. doi:10.1111/jch.12483. Strong Heart Study ND AI/AN HTN ~27%.",
+    "dm_htn_comorbidity": "Walls ML et al. J Diabetes Res. 2025. doi:10.1155/jdr/6591307. 77.9% of AI/AN T2D adults also have HTN.",
+    "ckd_comorbidity": "Nephrology Mini Orals. Nephrology. 2021;26(S2):17-32. doi:10.1111/nep.13930.",
+    "sepsis_social_determinants": "Ardabili AK et al. World Med Health Policy. 2025;17(4):823-830. doi:10.1002/wmh3.70043.",
+    "sepsis_vitals": "Singer M et al. JAMA. 2016;315(8):801-810. doi:10.1001/jama.2016.0287.",
+    "afebrile_elderly": "Gavazzi G, Krause KH. Lancet Infect Dis. 2002;2(11):659-666. doi:10.1016/S1473-3099(02)00437-1.",
+    "ihs_workforce": "Brockie T et al. J Clin Nurs. 2021;32(3-4):610-624. doi:10.1111/jocn.15801."
+  },
+  "sex_ratio_female": 0.521,
+  "ethnicity_weights": {
+    "native": 0.82,
+    "white": 0.13,
+    "other": 0.05
+  },
+  "age_band_weights": [[18, 64, 0.55], [65, 90, 0.45]],
+  "rural": true,
+  "region": "Northern Plains",
+  "country": "USA",
+  "state": "North Dakota",
+  "tribe": "Turtle Mountain Band of Chippewa",
+  "ihs_service_unit": "Turtle Mountain Service Unit",
+  "calibration_notes": [
+    "AI/AN DM prevalence 13.6% nationally vs 8.7% US average. Engine uses US-baseline. Documented gap.",
+    "HTN prevalence ~27% in ND AI/AN (Strong Heart Study). Lower than US average but higher DM burden.",
+    "77.9% of AI/AN T2D adults also have HTN (Walls 2025).",
+    "Turtle Mountain has slightly higher white/mixed population than Standing Rock due to historical Metis community.",
+    "Rural flag = True. Pneumonia upweighted.",
+    "IHS access limitations apply — ICU population is those who reached care, not population-representative."
+  ],
+  "continuous_vars": {
+    "_source": "IHS Trends in Indian Health 2014-2015; NHANES AI/AN oversampling; Strong Heart Study ND data.",
+    "hba1c": {
+      "observed_mean": 7.0,
+      "observed_std": 2.1,
+      "unit": "%",
+      "source": "IHS data; AI/AN DM prevalence 13.6% (Dai 2024); slightly lower mean than Standing Rock due to Metis admixture"
+    },
+    "bmi": {
+      "observed_mean": 31.5,
+      "observed_std": 7.8,
+      "unit": "kg/m2",
+      "source": "BRFSS AI/AN oversampling; Strong Heart Study. High obesity burden in AI/AN populations."
+    },
+    "systolic_bp": {
+      "observed_mean": 124.0,
+      "observed_std": 20.5,
+      "unit": "mmHg",
+      "source": "Strong Heart Study ND AI/AN; Jolly 2015 WATCH Study; estimated 27-40% HTN AI/AN"
+    },
+    "creatinine": {
+      "observed_mean": 1.10,
+      "observed_std": 0.60,
+      "unit": "mg/dL",
+      "source": "NHANES AI/AN CKD data; higher CKD burden from DM+HTN comorbidity; Nephrology 2021"
+    },
+    "egfr": {
+      "observed_mean": 67.0,
+      "observed_std": 27.0,
+      "unit": "mL/min/1.73m2",
+      "source": "IHS CKD surveillance; CKD-EPI 2021; elevated CKD stage 3+ in AI/AN DM+HTN population"
+    }
+  },
+  "temporal_trends": {
+    "_source": "IHS trend data; CDC AI/AN surveillance; CMS Part D AI/AN utilization; BRFSS AI/AN oversampling",
+    "6": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.0050,
+        "hypertension": 0.0044,
+        "ckd": 0.0033,
+        "_unit": "absolute prevalence change (fraction) at 6-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.0167,
+        "statins": 0.0139,
+        "ace_inhibitors": 0.0111,
+        "_unit": "relative change fraction at 6-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.0028,
+        "comorbidity_index_delta": 0.0067,
+        "_unit": "absolute change at 6-month drift interval"
+      },
+      "source": "IHS trends 2024; CDC AI/AN Diabetes Surveillance; BRFSS AI/AN 2022"
+    },
+    "12": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.010,
+        "hypertension": 0.0089,
+        "ckd": 0.0067,
+        "_unit": "absolute prevalence change (fraction) at 12-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.0333,
+        "statins": 0.0278,
+        "ace_inhibitors": 0.0222,
+        "_unit": "relative change fraction at 12-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.0056,
+        "comorbidity_index_delta": 0.0133,
+        "_unit": "absolute change at 12-month drift interval"
+      },
+      "source": "IHS trends 2024; CDC AI/AN Diabetes Surveillance; BRFSS AI/AN 2022"
+    },
+    "18": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.015,
+        "hypertension": 0.013,
+        "ckd": 0.010,
+        "_unit": "absolute prevalence change (fraction) at 18-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.050,
+        "statins": 0.042,
+        "ace_inhibitors": 0.033,
+        "_unit": "relative change fraction at 18-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.0083,
+        "comorbidity_index_delta": 0.020,
+        "_unit": "absolute change at 18-month drift interval"
+      },
+      "source": "IHS trends 2024; CDC AI/AN Diabetes Surveillance; BRFSS AI/AN 2022"
+    }
+  }
+}

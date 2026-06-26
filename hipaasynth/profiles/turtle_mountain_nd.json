@@ -1,0 +1,134 @@
+{
+  "profile_name": "turtle_mountain_nd",
+  "display_name": "Turtle Mountain Band of Chippewa — North Dakota",
+  "population": 15500,
+  "sources": {
+    "population": "U.S. Census Bureau ACS 2020-2024. Rolette County ND population ~14,600 plus off-reservation tribal members ~15,500 total service area.",
+    "ethnicity": "U.S. Census Bureau ACS 2020-2024. Rolette County ND: American Indian/Alaska Native 74.3%, white 21.4%, other 4.3%.",
+    "sex_ratio": "U.S. Census Bureau ACS 2020-2024. Rolette County ND female proportion: 50.8%.",
+    "age_distribution": "U.S. Census Bureau ACS 2020-2024. Rolette County ND median age 31.2 years. ICU cohort age bands: 55% 65+, 45% 18-64.",
+    "diabetes": "Indian Health Service. IHS Trends in Indian Health 2014-2015. Aberdeen Area AI/AN diabetes prevalence 14.5%. CDC 2022: AI/AN 14.7% vs 7.5% non-Hispanic white.",
+    "hypertension": "Espey DK et al. Am J Public Health. 2014;104(S3):S303-S311. Cardiovascular disease mortality elevated 1.2x. HTN estimated ~35-40% adult AI/AN.",
+    "sepsis_burden": "Brinkworth JF, Shaw JG. Am J Biol Anthropol. 2022;178(S74):230-255.",
+    "rural_flag": "HRSA Rural Health Grants Eligibility. Rolette County ND designated rural.",
+    "IHS_context": "Indian Health Service Aberdeen Area. Turtle Mountain Service Unit, Belcourt ND. PHS Act Title V tribal health program.",
+    "sepsis_vitals": "Singer M et al. JAMA. 2016;315(8):801-810.",
+    "afebrile_elderly": "Gavazzi G, Krause KH. Lancet Infect Dis. 2002;2(11):659-666.",
+    "infection_source": "Rhee C et al. JAMA Intern Med. 2017;177(7):944-951. Rural adjustment applied.",
+    "lab_floors": "WBC: Singer 2016. Glucose: ADA 2024. Creatinine: KDIGO 2022. LDL: Grundy 2019."
+  },
+  "sex_ratio_female": 0.508,
+  "ethnicity_weights": {
+    "native": 0.743,
+    "white": 0.214,
+    "other": 0.043
+  },
+  "age_band_weights": [[18, 64, 0.45], [65, 90, 0.55]],
+  "rural": true,
+  "region": "Northern Plains",
+  "country": "USA",
+  "state": "ND",
+  "ihs_service_unit": "Turtle Mountain Service Unit, Belcourt ND",
+  "calibration_notes": [
+    "Diabetes prevalence 14.7% AI/AN vs 7.5% non-Hispanic white — documented gap in engine",
+    "Turtle Mountain has higher white proportion than Standing Rock — reflected in ethnicity weights",
+    "Pneumonia and skin/soft tissue infections upweighted for rural + DM burden",
+    "Air-gapped IHS/tribal network is primary deployment target"
+  ],
+  "continuous_vars": {
+    "_source": "IHS Trends in Indian Health 2014-2015; NHANES AI/AN oversampling; Strong Heart Study ND data.",
+    "hba1c": {
+      "observed_mean": 6.9,
+      "observed_std": 2.0,
+      "unit": "%",
+      "source": "IHS Aberdeen Area; slightly lower mean than Standing Rock due to higher white admixture (21.4%)"
+    },
+    "bmi": {
+      "observed_mean": 31.2,
+      "observed_std": 7.7,
+      "unit": "kg/m2",
+      "source": "BRFSS AI/AN oversampling; Strong Heart Study; moderate-high obesity burden"
+    },
+    "systolic_bp": {
+      "observed_mean": 124.0,
+      "observed_std": 20.0,
+      "unit": "mmHg",
+      "source": "Strong Heart Study ND AI/AN; Espey 2014; HTN estimated 35-40% AI/AN"
+    },
+    "creatinine": {
+      "observed_mean": 1.08,
+      "observed_std": 0.58,
+      "unit": "mg/dL",
+      "source": "NHANES AI/AN CKD data; moderate CKD burden; KDIGO 2022"
+    },
+    "egfr": {
+      "observed_mean": 68.0,
+      "observed_std": 26.5,
+      "unit": "mL/min/1.73m2",
+      "source": "IHS CKD surveillance; CKD-EPI 2021; CKD stage 3+ elevated in AI/AN DM+HTN population"
+    }
+  },
+  "temporal_trends": {
+    "_source": "IHS trend data; CDC AI/AN surveillance; CMS Part D AI/AN utilization; BRFSS AI/AN oversampling",
+    "6": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.0050,
+        "hypertension": 0.0044,
+        "ckd": 0.0033,
+        "_unit": "absolute prevalence change (fraction) at 6-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.0167,
+        "statins": 0.0139,
+        "ace_inhibitors": 0.0111,
+        "_unit": "relative change fraction at 6-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.0028,
+        "comorbidity_index_delta": 0.0067,
+        "_unit": "absolute change at 6-month drift interval"
+      },
+      "source": "IHS trends 2024; CDC AI/AN Diabetes Surveillance; BRFSS AI/AN 2022"
+    },
+    "12": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.010,
+        "hypertension": 0.0089,
+        "ckd": 0.0067,
+        "_unit": "absolute prevalence change (fraction) at 12-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.0333,
+        "statins": 0.0278,
+        "ace_inhibitors": 0.0222,
+        "_unit": "relative change fraction at 12-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.0056,
+        "comorbidity_index_delta": 0.0133,
+        "_unit": "absolute change at 12-month drift interval"
+      },
+      "source": "IHS trends 2024; CDC AI/AN Diabetes Surveillance; BRFSS AI/AN 2022"
+    },
+    "18": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.015,
+        "hypertension": 0.013,
+        "ckd": 0.010,
+        "_unit": "absolute prevalence change (fraction) at 18-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.050,
+        "statins": 0.042,
+        "ace_inhibitors": 0.033,
+        "_unit": "relative change fraction at 18-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.0083,
+        "comorbidity_index_delta": 0.020,
+        "_unit": "absolute change at 18-month drift interval"
+      },
+      "source": "IHS trends 2024; CDC AI/AN Diabetes Surveillance; BRFSS AI/AN 2022"
+    }
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "profile_name": "karachi_pakistan",
+  "display_name": "Karachi, Pakistan",
+  "population": 20300000,
+  "sources": {
+    "population": "Pakistan Bureau of Statistics, Census 2023. Karachi Division total population 20.3 million.",
+    "sex_ratio": "CIA World Factbook 2024. Pakistan 65+: 0.87 male/female = 53.5% female. Total population: 1.04 male/female = 49.0% female. Karachi urban estimate applied.",
+    "ethnicity": "Pakistan Bureau of Statistics, Census 2024. Ethnic groups in Karachi: Urdu-speaking (Muhajir) 50.6%, Pashtun 13.5%, Sindhi 11.1%, Punjabi 10.7%, Balochi 4.0%, other 10.1%. Source: Wikipedia, Ethnic groups in Karachi, citing 2024 Pakistani census.",
+    "age_distribution": "UN World Population Prospects 2024. Pakistan median age 20.8yr. ICU cohort age bands set per Promise Abegunde spec: 55% 65+, 45% 18-64 — not population-representative.",
+    "infection_source_notes": "Pneumonia weighted higher than US profiles: Karachi urban air pollution burden (WHO Global Ambient Air Quality Database 2024), TB co-infection prevalence (Pakistan NTP Annual Report 2023), consistent with Rhee C et al. JAMA Intern Med 2017 base distribution adjusted for LMIC urban context."
+  },
+  "sex_ratio_female": 0.488,
+  "ethnicity_weights": {
+    "asian": 1.0
+  },
+  "ethnicity_label_note": "Engine maps Karachi population to 'asian' ethnicity bucket. Internal label only — does not distinguish Urdu-speaking, Pashtun, Sindhi, Punjabi, Balochi subgroups. Subgroup breakdown documented in profile sources above.",
+  "age_band_weights": [
+    [18, 64, 0.45],
+    [65, 90, 0.55]
+  ],
+  "age_band_source": "Promise Abegunde cohort specification. Not population-representative of Karachi general population.",
+  "infection_source_modifier": {
+    "pneumonia_boost": 0.06,
+    "uti_reduction": 0.03,
+    "note": "Pneumonia boosted +6% vs US default to reflect Karachi urban air pollution and TB burden. UTI reduced -3% to compensate. Source: WHO GAAQD 2024, Pakistan NTP 2023."
+  },
+  "known_limitations": [
+    "Engine ethnicity schema does not support intra-Asian subgroup distinctions (Urdu/Pashtun/Sindhi/Punjabi/Balochi). All mapped to 'asian'.",
+    "Sex ratio applied from national Pakistan data — Karachi-specific sex ratio by age not available in public datasets.",
+    "ICU age band (55% 65+) per Promise spec, not Karachi population pyramid (Pakistan median age 20.8yr means far fewer elderly in general population).",
+    "Sepsis infection source distribution adapted from US Rhee 2017 base with urban Pakistan adjustments — no Karachi-specific ICU sepsis source distribution available in published literature.",
+    "Afebrile and AMS-only rates driven by age/comorbidity logic, not Pakistan-specific clinical data."
+  ],
+  "continuous_vars": {
+    "_source": "IDF Diabetes Atlas 2021; WHO STEPS Pakistan 2014-2018; NHANES reference for lab norms; Pakistan NCD risk factor survey.",
+    "hba1c": {
+      "observed_mean": 6.4,
+      "observed_std": 1.9,
+      "unit": "%",
+      "source": "IDF Diabetes Atlas 2021; Pakistan DM prevalence ~26.7% adults (IDF 2021); elevated urban Karachi burden"
+    },
+    "bmi": {
+      "observed_mean": 26.8,
+      "observed_std": 6.2,
+      "unit": "kg/m2",
+      "source": "WHO STEPS Pakistan 2014-2018; lower mean BMI vs US despite high DM; overweight threshold lower in South Asian populations"
+    },
+    "systolic_bp": {
+      "observed_mean": 128.0,
+      "observed_std": 22.0,
+      "unit": "mmHg",
+      "source": "WHO Pakistan NCD risk factor survey; HTN prevalence ~40-45% Pakistan adults (Kearney 2005 projections)"
+    },
+    "creatinine": {
+      "observed_mean": 1.08,
+      "observed_std": 0.58,
+      "unit": "mg/dL",
+      "source": "NHANES reference adjusted for LMIC higher CKD burden; DM+HTN driven CKD; KDIGO 2022"
+    },
+    "egfr": {
+      "observed_mean": 71.0,
+      "observed_std": 26.5,
+      "unit": "mL/min/1.73m2",
+      "source": "CKD-EPI 2021; elevated CKD burden due to high DM+HTN prevalence in urban Pakistan"
+    }
+  },
+  "temporal_trends": {
+    "_source": "IDF Diabetes Atlas 2021-2030 projections; WHO EMRO NCD trend data; Pakistan NTP 2023",
+    "6": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.0056,
+        "hypertension": 0.0050,
+        "ckd": 0.0033,
+        "_unit": "absolute prevalence change (fraction) at 6-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.0111,
+        "statins": 0.0139,
+        "ace_inhibitors": 0.0111,
+        "_unit": "relative change fraction at 6-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.0022,
+        "comorbidity_index_delta": 0.0072,
+        "_unit": "absolute change at 6-month drift interval"
+      },
+      "source": "IDF Atlas 2021; WHO EMRO NCD trends; Pakistan NTP 2023"
+    },
+    "12": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.011,
+        "hypertension": 0.010,
+        "ckd": 0.0067,
+        "_unit": "absolute prevalence change (fraction) at 12-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.0222,
+        "statins": 0.0278,
+        "ace_inhibitors": 0.0222,
+        "_unit": "relative change fraction at 12-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.0044,
+        "comorbidity_index_delta": 0.0144,
+        "_unit": "absolute change at 12-month drift interval"
+      },
+      "source": "IDF Atlas 2021; WHO EMRO NCD trends; Pakistan NTP 2023"
+    },
+    "18": {
+      "disease_prevalence_shift": {
+        "diabetes": 0.017,
+        "hypertension": 0.015,
+        "ckd": 0.010,
+        "_unit": "absolute prevalence change (fraction) at 18-month drift interval"
+      },
+      "prescription_shift": {
+        "antibiotics": -0.033,
+        "statins": 0.042,
+        "ace_inhibitors": 0.033,
+        "_unit": "relative change fraction at 18-month drift interval"
+      },
+      "demographic_shift": {
+        "age_65_plus_fraction_delta": 0.0067,
+        "comorbidity_index_delta": 0.022,
+        "_unit": "absolute change at 18-month drift interval"
+      },
+      "source": "IDF Atlas 2021; WHO EMRO NCD trends; Pakistan NTP 2023"
+    }
+  }
+}
