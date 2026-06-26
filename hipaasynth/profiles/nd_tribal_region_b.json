@@ -11,7 +11,7 @@
     "hypertension": "Espey DK et al. Am J Public Health. 2014;104(S3):S303-S311. Cardiovascular disease mortality elevated 1.2x. HTN estimated ~35-40% adult AI/AN.",
     "sepsis_burden": "Brinkworth JF, Shaw JG. Am J Biol Anthropol. 2022;178(S74):230-255.",
     "rural_flag": "HRSA Rural Health Grants Eligibility. Rolette County ND designated rural.",
-    "IHS_context": "Indian Health Service Aberdeen Area. Northern Plains tribal population Service Unit, Northern Plains. PHS Act Title V tribal health program.",
+    "IHS_context": "Indian Health Service Aberdeen Area. Northern Plains tribal health region Service Unit, Northern Plains. PHS Act Title V tribal health program.",
     "sepsis_vitals": "Singer M et al. JAMA. 2016;315(8):801-810.",
     "afebrile_elderly": "Gavazzi G, Krause KH. Lancet Infect Dis. 2002;2(11):659-666.",
     "infection_source": "Rhee C et al. JAMA Intern Med. 2017;177(7):944-951. Rural adjustment applied.",
@@ -42,7 +42,7 @@
   "ihs_service_unit": "IHS Northern Plains Region",
   "calibration_notes": [
     "Diabetes prevalence 14.7% AI/AN vs 7.5% non-Hispanic white \u2014 documented gap in engine",
-    "Northern Plains tribal population has higher white proportion than Northern Plains tribal population \u2014 reflected in ethnicity weights",
+    "Northern Plains tribal health region has higher white proportion than Northern Plains tribal health region \u2014 reflected in ethnicity weights",
     "Pneumonia and skin/soft tissue infections upweighted for rural + DM burden",
     "Air-gapped IHS/tribal network is primary deployment target"
   ],
@@ -52,7 +52,7 @@
       "observed_mean": 6.9,
       "observed_std": 2.0,
       "unit": "%",
-      "source": "IHS Aberdeen Area; slightly lower mean than Northern Plains tribal population due to higher white admixture (21.4%)"
+      "source": "IHS Aberdeen Area; slightly lower mean than Northern Plains tribal health region due to higher white admixture (21.4%)"
     },
     "bmi": {
       "observed_mean": 31.2,

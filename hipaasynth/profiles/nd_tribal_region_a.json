@@ -10,8 +10,8 @@
     "diabetes": "Indian Health Service. IHS Trends in Indian Health 2014-2015. Aberdeen Area (ND/SD) diabetes prevalence: 14.5% age-adjusted vs 6.4% US general population. CDC IHS data 2022 update: AI/AN diabetes prevalence 14.7% vs 7.5% non-Hispanic white.",
     "hypertension": "Espey DK et al. Leading causes of death and all-cause mortality in American Indians and Alaska Natives. Am J Public Health. 2014;104(S3):S303-S311. Cardiovascular disease mortality 1.2x higher than US all-races. HTN prevalence estimated ~35-40% adult AI/AN.",
     "sepsis_burden": "Brinkworth JF, Shaw JG. On race, human variation, and who gets and dies of sepsis. Am J Biol Anthropol. 2022;178(S74):230-255. Indigenous people disproportionately overrepresented in sepsis incidence and mortality in US.",
-    "rural_flag": "Northern Plains tribal population IHS Service Unit. Rural designation: HRSA Rural Health Grants Eligibility. All ZIP codes in service area rural.",
-    "IHS_context": "Indian Health Service Aberdeen Area. Northern Plains tribal population Service Unit, Northern Plains. Federal trust responsibility healthcare provider. Air-gapped network infrastructure common.",
+    "rural_flag": "Northern Plains tribal health region IHS Service Unit. Rural designation: HRSA Rural Health Grants Eligibility. All ZIP codes in service area rural.",
+    "IHS_context": "Indian Health Service Aberdeen Area. Northern Plains tribal health region Service Unit, Northern Plains. Federal trust responsibility healthcare provider. Air-gapped network infrastructure common.",
     "sepsis_vitals": "Singer M et al. Sepsis-3. JAMA. 2016;315(8):801-810.",
     "afebrile_elderly": "Gavazzi G, Krause KH. Ageing and infection. Lancet Infect Dis. 2002;2(11):659-666.",
     "infection_source": "Rhee C et al. JAMA Intern Med. 2017;177(7):944-951. Rural adjustment applied.",
@@ -59,7 +59,7 @@
       "observed_mean": 32.0,
       "observed_std": 8.0,
       "unit": "kg/m2",
-      "source": "BRFSS AI/AN oversampling; Strong Heart Study. High obesity burden in Northern Plains tribal population population."
+      "source": "BRFSS AI/AN oversampling; Strong Heart Study. High obesity burden in Northern Plains tribal health region population."
     },
     "systolic_bp": {
       "observed_mean": 126.0,

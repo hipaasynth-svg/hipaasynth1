@@ -19,7 +19,7 @@ import argparse
 import time
 from datetime import date
 from pathlib import Path
-from hipaasynth.core.config import GenerationConfig, DEFAULT_SYNTHETIC_DISCLAIMER
+from hipaasynth.core.config import GenerationConfig, DEFAULT_SYNTHETIC_DISCLAIMER, ENGINE_VERSION
 from hipaasynth.pipelines.population_pipeline import generate_patients
 from hipaasynth.exporters.exporters import (
     export_json, export_csv, export_fhir,
@@ -50,7 +50,7 @@ def main():
     csv_path = output_dir / "cohort.csv"
     fhir_path = output_dir / "cohort_fhir.json"
     print("\n" + "=" * 50)
-    print("HIPAASYNTH ENGINE v1.0.0")
+    print(f"HIPAASYNTH ENGINE v{ENGINE_VERSION}")
     print("=" * 50)
     profile_data = None
     if args.profile is not None:

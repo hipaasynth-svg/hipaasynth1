@@ -17,7 +17,7 @@
 """
 Exporters — FHIR R5, JSON, CSV.
 
-FHIR fix applied (replit lineage):
+FHIR fix applied:
   bundle ID uses os.path.basename(filename) not full path.
   This ensures FHIR bundle IDs are path-independent.
 """
@@ -363,7 +363,7 @@ def _patient_to_fhir(patient):
 def export_fhir(patients, filename="fhir_bundle.json"):
     """
     Export FHIR R5 Bundle. Bundle ID uses os.path.basename for path-independence.
-    Fix applied from replit lineage: bundle::{basename}::{count} not full path.
+    Fix applied: bundle::{basename}::{count} not full path.
     """
     _ensure_parent_dir(filename)
     bundle = {

@@ -3,9 +3,9 @@
   "display_name": "Northern Plains Tribal Health Region B",
   "population": 7280,
   "sources": {
-    "population": "U.S. Census Bureau. ACS 2020-2024 5-Year Estimates. Northern Plains tribal population Reservation total population ~7,280.",
-    "ethnicity": "U.S. Census Bureau ACS 2020-2024. Northern Plains tribal population Reservation: American Indian/Alaska Native >80% of population.",
-    "sex_ratio": "U.S. Census Bureau ACS 2020-2024. Female 52.1% on Northern Plains tribal population Reservation.",
+    "population": "U.S. Census Bureau. ACS 2020-2024 5-Year Estimates. Northern Plains tribal health region Reservation total population ~7,280.",
+    "ethnicity": "U.S. Census Bureau ACS 2020-2024. Northern Plains tribal health region Reservation: American Indian/Alaska Native >80% of population.",
+    "sex_ratio": "U.S. Census Bureau ACS 2020-2024. Female 52.1% on Northern Plains tribal health region Reservation.",
     "diabetes_prevalence": "Dai J et al. Diabetes Obes Metab. 2024;27(1):328-337. doi:10.1111/dom.16021. AI/AN diabetes prevalence 13.6% nationally.",
     "hypertension_prevalence": "Jolly SE et al. J Clin Hypertens. 2015;17(10):812-818. doi:10.1111/jch.12483. Strong Heart Study ND AI/AN HTN ~27%.",
     "dm_htn_comorbidity": "Walls ML et al. J Diabetes Res. 2025. doi:10.1155/jdr/6591307. 77.9% of AI/AN T2D adults also have HTN.",
@@ -42,7 +42,7 @@
     "AI/AN DM prevalence 13.6% nationally vs 8.7% US average. Engine uses US-baseline. Documented gap.",
     "HTN prevalence ~27% in ND AI/AN (Strong Heart Study). Lower than US average but higher DM burden.",
     "77.9% of AI/AN T2D adults also have HTN (Walls 2025).",
-    "Northern Plains tribal population has slightly higher white/mixed population than Northern Plains tribal population due to historical Northern Plains tribal population community.",
+    "Northern Plains tribal health region has slightly higher white/mixed population than Northern Plains tribal health region due to historical Northern Plains tribal population community.",
     "Rural flag = True. Pneumonia upweighted.",
     "IHS access limitations apply \u2014 ICU population is those who reached care, not population-representative."
   ],
@@ -52,7 +52,7 @@
       "observed_mean": 7.0,
       "observed_std": 2.1,
       "unit": "%",
-      "source": "IHS data; AI/AN DM prevalence 13.6% (Dai 2024); slightly lower mean than Northern Plains tribal population due to Northern Plains tribal population admixture"
+      "source": "IHS data; AI/AN DM prevalence 13.6% (Dai 2024); slightly lower mean than Northern Plains tribal health region due to Northern Plains tribal population admixture"
     },
     "bmi": {
       "observed_mean": 31.5,

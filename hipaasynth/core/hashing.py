@@ -34,8 +34,7 @@ def stable_seed_from_id(identifier, salt: int = 0) -> int:
     Process-stable 32-bit seed derived from a string identifier.
 
     Python's built-in hash() is process-randomized unless PYTHONHASHSEED is
-    pinned, which violates the determinism contract required by
-    the determinism contract (results must be byte-identical across separate
+    pinned, which violates the determinism contract (results must be byte-identical across separate
     interpreter runs and across machines).
 
     This helper produces an identical 32-bit unsigned seed every time for
