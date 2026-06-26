@@ -17,6 +17,7 @@
 """Rare-disease DIF demo: run polymorphic fairness audit on Fabry disease patients."""
 
 import sys
+from datetime import date
 from pathlib import Path
 
 # Allow running this example without installing the package.
@@ -42,7 +43,7 @@ def main() -> None:
         visits_min=1,
         visits_max=2,
         synthetic_disclaimer=DEFAULT_SYNTHETIC_DISCLAIMER,
-        run_date="2026-06-24",
+        run_date=date.today().isoformat(),
     )
 
     dif_config = DIFConfig(

@@ -32,6 +32,8 @@ Each returned dict contains:
     _meta          (dict)  — injected by TemporalEngine
 """
 
+from datetime import date
+
 from hipaasynth.core.config import GenerationConfig, DEFAULT_SYNTHETIC_DISCLAIMER
 from hipaasynth.pipelines.population_pipeline import generate_patients
 
@@ -64,7 +66,7 @@ def run_pipeline(config=None, context=None) -> list[dict]:
         visits_min=1,
         visits_max=2,
         synthetic_disclaimer=DEFAULT_SYNTHETIC_DISCLAIMER,
-        run_date="2026-05-03",
+        run_date=date.today().isoformat(),
         population_profile_path=profile,
     )
 

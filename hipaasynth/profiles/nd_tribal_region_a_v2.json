@@ -3,9 +3,9 @@
   "display_name": "Northern Plains Tribal Health Region A",
   "population": 8250,
   "sources": {
-    "population": "U.S. Census Bureau. ACS 2020-2024 5-Year Estimates. Northern Plains tribal population Reservation total population ~8,250.",
-    "ethnicity": "U.S. Census Bureau ACS 2020-2024. Northern Plains tribal population Reservation: American Indian/Alaska Native >85% of population.",
-    "sex_ratio": "U.S. Census Bureau ACS 2020-2024. Female 51.2% on Northern Plains tribal population Reservation.",
+    "population": "U.S. Census Bureau. ACS 2020-2024 5-Year Estimates. Northern Plains tribal health region Reservation total population ~8,250.",
+    "ethnicity": "U.S. Census Bureau ACS 2020-2024. Northern Plains tribal health region Reservation: American Indian/Alaska Native >85% of population.",
+    "sex_ratio": "U.S. Census Bureau ACS 2020-2024. Female 51.2% on Northern Plains tribal health region Reservation.",
     "diabetes_prevalence": "Dai J et al. Trends in anti-diabetic medication use among AI/AN Peoples 2009-2013. Diabetes Obes Metab. 2024;27(1):328-337. doi:10.1111/dom.16021. AI/AN diabetes prevalence 13.6% nationally (2019-2021), nearly twice non-Hispanic White adults (6.9%).",
     "hypertension_prevalence": "Jolly SE et al. Prevalence of Hypertension in Western Alaska Native People: WATCH Study. J Clin Hypertens. 2015;17(10):812-818. doi:10.1111/jch.12483. Strong Heart Study North/South Dakota AI/AN HTN prevalence ~27% at baseline.",
     "dm_htn_comorbidity": "Walls ML et al. Together Overcoming Diabetes Study. J Diabetes Res. 2025. doi:10.1155/jdr/6591307. 77.9% of AI/AN adults with T2D also have hypertension across 14 IHS units.",
