@@ -39,9 +39,10 @@ jobs:
                   if not f.endswith('.py'): continue
                   path = os.path.join(root, f)
                   try:
-                      src = open(path).read()
+                      with open(path, encoding='utf-8') as f:
+                          src = f.read()
                       tree = ast.parse(src)
-                  except:
+                  except Exception:
                       continue
                   for node in ast.walk(tree):
                       if isinstance(node, ast.ImportFrom):

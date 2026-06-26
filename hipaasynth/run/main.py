@@ -17,7 +17,7 @@
 """HipAAsynth CLI — Generate synthetic patient cohorts."""
 import argparse
 import time
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 from hipaasynth.core.config import GenerationConfig, DEFAULT_SYNTHETIC_DISCLAIMER, ENGINE_VERSION
 from hipaasynth.pipelines.population_pipeline import generate_patients
@@ -40,7 +40,6 @@ def main():
     parser = build_parser()
     args = parser.parse_args()
     if args.demo:
-        from datetime import datetime
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         output_dir = Path(args.out) / f"demo_{timestamp}"
     else:

@@ -26,13 +26,14 @@ import json
 import os
 import uuid
 from collections import Counter
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Iterable, List
 
 from hipaasynth.core.schema import Patient
 
 _NS = uuid.UUID("6ba7b810-9dad-11d1-80b4-00c04fd430c8")
-_BIRTH_YEAR_REF = 2024
+_BIRTH_YEAR_REF = datetime.now().year
 
 
 def _duuid(key: str) -> str:

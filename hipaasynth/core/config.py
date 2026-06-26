@@ -26,9 +26,9 @@ from datetime import date
 from typing import Optional
 
 # Version constants — single source of truth for the entire codebase.
-ENGINE_VERSION      = "1.0.5"
-SCHEMA_VERSION      = "1.0.5"
-ADVERSARIAL_VERSION = "1.0.5"
+ENGINE_VERSION      = "1.0.0"
+SCHEMA_VERSION      = "1.0.0"
+ADVERSARIAL_VERSION = "1.0.0"
 
 # Default ethnicity weights (sum to 1.0)
 DEFAULT_ETHNICITY_WEIGHTS = {
