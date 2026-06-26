@@ -38,10 +38,10 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-from copd.copd_generator import generate_copd_cohort, save_cohort as save_copd
-from chf.chf_generator   import generate_chf_cohort,  save_cohort as save_chf
-from oud.oud_generator   import generate_oud_cohort,   save_cohort as save_oud
-from calibration_validator import run_all
+from hipaasynth.modules.copd.copd_generator import generate_copd_cohort, save_cohort as save_copd
+from hipaasynth.modules.chf.chf_generator   import generate_chf_cohort,  save_cohort as save_chf
+from hipaasynth.modules.oud.oud_generator   import generate_oud_cohort,   save_cohort as save_oud
+from hipaasynth.modules.calibration_validator import run_all
 
 BASE = os.path.join(os.path.dirname(__file__), "output")
 
