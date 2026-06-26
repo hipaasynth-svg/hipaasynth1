@@ -180,7 +180,7 @@ class PolymorphicFormEngine:
         cond_str = "/".join(conds) if conds else "none"
         lab_str = "; ".join(visit["labs"]) if visit["labs"] else "none"
         return (
-            f"{d['age']}yo {d['sex']} {d['ethnicity'][:3].lower()} | "
+            f"{d['age']}yo {d['sex']} {d.get('ethnicity', 'unknown')} | "
             f"{cond_str} | {visit['type']} {visit['date']} | "
             f"{self._acuity_line(obs)} | BMI {d['bmi']:.1f} | "
             f"labs: {lab_str}"
@@ -200,7 +200,6 @@ class PolymorphicFormEngine:
         pain_scale = "I would rate my worry today as 4 out of 10."
 
         lines = [
-            "My name is on the chart, but I will use a made-up name here.",
             f"I am a {d['age']}-year-old {d['sex']}. My doctor says I have {cond_text}.",
             f"My most recent visit was a {visit['type'].lower()} on {visit['date']}.",
             f"The reason was: {visit['diagnosis']}.",
@@ -249,17 +248,17 @@ class PolymorphicFormEngine:
         cond_text = (
             ", ".join(c.replace("_", " ") for c in conds)
             if conds
-            else "no sickness name I understand"
+            else "no diagnosis recorded"
         )
 
         lines = [
-            f"I am {d['age']} year. I am {d['sex']}.",
-            f"Doctor say I have: {cond_text}.",
-            f"I go {visit['type'].lower()} on {visit['date']}.",
-            f"Problem is {visit['diagnosis']}.",
-            f"I show with hand (gesture) how I feel: {self._acuity_line(obs)}.",
-            "My English not good. Need interpreter.",
-            f"BMI number is {d['bmi']:.1f}.",
+            f"Age: {d['age']} years. Sex: {d['sex']}.",
+            f"Primary conditions: {cond_text}.",
+            f"Most recent encounter: {visit['type']} on {visit['date']}.",
+            f"Chief concern: {visit['diagnosis']}.",
+            f"Clinical findings: {self._acuity_line(obs)}.",
+            "[NOTE: Limited English proficiency — interpreter services required.]",
+            f"BMI: {d['bmi']:.1f} kg/m2.",
         ]
         return " ".join(lines)
 

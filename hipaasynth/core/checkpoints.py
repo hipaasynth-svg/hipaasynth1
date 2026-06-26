@@ -25,39 +25,37 @@ from hipaasynth.core.logger import log_event
 
 
 def _append_hash(context, relative_path, digest):
-    """
-    Append a hash entry to hashes.json.
-
-    Uses a temporary file + atomic rename to reduce the chance of corruption
-    when multiple processes write concurrently. Concurrent writes can still
-    lose updates; a file lock should be added if true multi-process safety is
-    required.
-    """
     hashes_path = os.path.join(context.run_dir, "hashes.json")
+    lock_path = hashes_path + ".lock"
     try:
+        import fcntl
+        with open(lock_path, "w") as lockfile:
+            fcntl.flock(lockfile.fileno(), fcntl.LOCK_EX)
+            try:
+                if os.path.exists(hashes_path):
+                    with open(hashes_path, "r", encoding="utf-8") as f:
+                        hashes = json.load(f)
+                else:
+                    hashes = {}
+                hashes[relative_path] = digest
+                fd, tmp_path = tempfile.mkstemp(dir=context.run_dir, suffix=".json")
+                with os.fdopen(fd, "w", encoding="utf-8") as f:
+                    json.dump(hashes, f, indent=2)
+                os.replace(tmp_path, hashes_path)
+            finally:
+                fcntl.flock(lockfile.fileno(), fcntl.LOCK_UN)
+    except (ImportError, AttributeError):
+        # Windows: fcntl not available, fall back to best-effort atomic rename
         if os.path.exists(hashes_path):
             with open(hashes_path, "r", encoding="utf-8") as f:
                 hashes = json.load(f)
         else:
             hashes = {}
-    except (OSError, json.JSONDecodeError) as exc:
-        raise RuntimeError(f"Failed to read hashes file: {hashes_path}") from exc
-
-    hashes[relative_path] = digest
-
-    try:
-        run_dir = context.run_dir
-        fd, tmp_path = tempfile.mkstemp(dir=run_dir, suffix=".json")
-        try:
-            with os.fdopen(fd, "w", encoding="utf-8") as f:
-                json.dump(hashes, f, indent=2)
-            os.replace(tmp_path, hashes_path)
-        except Exception:
-            if os.path.exists(tmp_path):
-                os.unlink(tmp_path)
-            raise
-    except OSError as exc:
-        raise RuntimeError(f"Failed to write hashes file: {hashes_path}") from exc
+        hashes[relative_path] = digest
+        fd, tmp_path = tempfile.mkstemp(dir=context.run_dir, suffix=".json")
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            json.dump(hashes, f, indent=2)
+        os.replace(tmp_path, hashes_path)
 
 
 def _dict_of_columns_to_rows(df: dict) -> tuple[list[str], list[dict]]:
