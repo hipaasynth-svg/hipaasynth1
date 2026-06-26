@@ -62,12 +62,12 @@ class TestPolymorphicForms:
         assert "ASSESSMENT:" in text
         assert "PLAN:" in text
 
-    def test_lep_form_has_broken_english_and_gesture(
+    def test_lep_form_has_interpreter_note(
         self, engine: PolymorphicFormEngine, sample_patient: Patient
     ) -> None:
         text = engine.express(sample_patient, Form.LEP_TRANSLATED)["full_text"]
-        assert "gesture" in text.lower()
         assert "interpreter" in text.lower()
+        assert "Limited English proficiency" in text
 
     def test_chw_form_has_sdoh_sections(
         self, engine: PolymorphicFormEngine, sample_patient: Patient

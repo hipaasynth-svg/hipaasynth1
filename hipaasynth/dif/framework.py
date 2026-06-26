@@ -23,13 +23,8 @@ from hipaasynth.core.config import GenerationConfig
 from hipaasynth.core.schema import Patient
 from hipaasynth.polymorphic import PolymorphicFormEngine
 from hipaasynth.polymorphic.metrics import PolymorphicMetricCalculator
+from hipaasynth.dif.model_interface import _ground_truth
 from hipaasynth.dif.report import FairnessPassport
-
-
-def _ground_truth(patient: Patient) -> bool:
-    """Acute-condition ground truth from the engine's observation bundle."""
-    obs = patient.observations or {}
-    return bool(obs.get("sepsis_flag") or obs.get("stroke_flag"))
 
 
 @dataclass(frozen=True)
