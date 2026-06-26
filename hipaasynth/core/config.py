@@ -21,12 +21,11 @@ This module defines version constants, default weights, and the GenerationConfig
 dataclass used to control synthetic patient generation parameters.
 """
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from datetime import date
 from typing import Optional
 
 # Version constants — single source of truth for the entire codebase.
-# All modules import from here; never define ENGINE_VERSION locally.
-# Rule: bump ENGINE_VERSION → update CHANGELOG to match. That's it.
 ENGINE_VERSION      = "1.0.5"
 SCHEMA_VERSION      = "1.0.5"
 ADVERSARIAL_VERSION = "1.0.5"
@@ -68,38 +67,41 @@ class GenerationConfig:
     """
     Configuration object for controlling synthetic patient generation.
 
+    All parameters have sensible defaults so the engine runs with minimal
+    configuration. Override only what you need.
+
     Attributes:
-        patient_count: Number of patient records to generate
-        seed: Optional global seed for reproducibility. If None, uses random seed.
-        age_min: Minimum age for all patients (inclusive)
-        age_max: Maximum age for all patients (inclusive)
-        required_condition: Optional condition that must be present in every record
-        sex_ratio_female: Probability of female sex (0.0 to 1.0)
-        ethnicity_weights: Optional dict mapping ethnicity to weight. If None, uses defaults.
-        include_visits: Whether to generate visit records
-        include_labs: Whether to generate lab results
-        visits_min: Minimum number of visits per patient (if include_visits=True)
-        visits_max: Maximum number of visits per patient (if include_visits=True)
-        synthetic_disclaimer: Disclaimer text to include in all records
-        run_date: Run date in YYYY-MM-DD format
-        age_band_weights: Optional list of (min_age, max_age, weight) tuples
-        population_profile_path: Optional path to a population profile JSON file
-        profile_name: Optional name of the applied population profile
+        patient_count: Number of patient records to generate.
+        seed: Seed for reproducibility. Same seed always produces the same output.
+        age_min: Minimum patient age (inclusive).
+        age_max: Maximum patient age (inclusive).
+        required_condition: If set, every patient will have this condition.
+        sex_ratio_female: Probability of female sex (0.0–1.0).
+        ethnicity_weights: Dict mapping ethnicity to weight. Uses defaults if None.
+        include_visits: Whether to generate visit records.
+        include_labs: Whether to generate lab results within visits.
+        visits_min: Minimum visits per patient (when include_visits=True).
+        visits_max: Maximum visits per patient (when include_visits=True).
+        synthetic_disclaimer: Disclaimer text embedded in every record.
+        run_date: Run date in YYYY-MM-DD format. Defaults to today.
+        age_band_weights: Optional list of (min_age, max_age, weight) tuples.
+        population_profile_path: Optional path to a population profile JSON file.
+        profile_name: Optional name of the applied population profile.
     """
-    patient_count: int
-    seed: Optional[int]
-    age_min: int
-    age_max: int
-    required_condition: Optional[str]
-    sex_ratio_female: float
-    ethnicity_weights: Optional[dict[str, float]]
-    include_visits: bool
-    include_labs: bool
-    visits_min: int
-    visits_max: int
-    synthetic_disclaimer: str
-    run_date: str  # "YYYY-MM-DD"
-    age_band_weights: Optional[list[tuple[int, int, float]]] = None
+    patient_count: int = 10
+    seed: Optional[int] = 42
+    age_min: int = 18
+    age_max: int = 90
+    required_condition: Optional[str] = None
+    sex_ratio_female: float = 0.5
+    ethnicity_weights: Optional[dict] = None
+    include_visits: bool = True
+    include_labs: bool = True
+    visits_min: int = 1
+    visits_max: int = 3
+    synthetic_disclaimer: str = DEFAULT_SYNTHETIC_DISCLAIMER
+    run_date: str = field(default_factory=lambda: date.today().isoformat())
+    age_band_weights: Optional[list] = None
     population_profile_path: Optional[str] = None
     profile_name: Optional[str] = None
 
