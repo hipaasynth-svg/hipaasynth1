@@ -72,10 +72,10 @@ CONDITION_LAB_MODIFIERS = {
     # Hyperlipidemia LDL: range 160-260 mg/dL; AHA/ACC 2018 [N6] high-risk
     # threshold 160+ mg/dL, upper bound for untreated dyslipidemia.
     ("hyperlipidemia", "LDL"): (160.0, 260.0),
-    # Sepsis WBC: leukocytosis 11-21 K/uL typical in bacterial sepsis [N5].
+    # Sepsis WBC: leukocytosis 11-19 K/uL typical in bacterial sepsis [N5].
     # Range reflects mild to severe leukocytosis; floor avoids leukopenia
     # which has a distinct clinical meaning (immunocompromise, late sepsis).
-    ("sepsis", "WBC"): (11.0, 21.0),
+    ("sepsis", "WBC"): (11.0, 19.0),
 }
 
 _REFERENCE_DATE = datetime(2024, 6, 15)

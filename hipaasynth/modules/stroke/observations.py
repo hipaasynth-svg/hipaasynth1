@@ -243,9 +243,9 @@ def build_stroke_observations(
     # TIA modeled as separate subtype, ~10% of acute presentations
     # ----------------------------------------------------------------
     r = rng.random()
-    if r < 0.13:
+    if r < 0.11:
         stroke_type = 'hemorrhagic'
-    elif r < 0.23:
+    elif r < 0.16:
         stroke_type = 'tia'
     else:
         stroke_type = 'ischemic'
@@ -292,7 +292,7 @@ def build_stroke_observations(
         nihss_mean = 8.0 + severity * 7.0
         nihss_raw  = int(round(max(5, min(15, _normal(rng, nihss_mean, 2.5)))))
     else:
-        nihss_mean = 20.0 + severity * 10.0
+        nihss_mean = 17.0 + severity * 10.0
         nihss_raw  = int(round(max(16, min(42, _normal(rng, nihss_mean, 5.0)))))
     if stroke_type == 'tia':
         nihss_raw = int(round(max(0, min(2, _normal(rng, 0.8, 0.8)))))
