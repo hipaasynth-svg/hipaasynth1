@@ -6,7 +6,7 @@
     "population": "Pakistan Bureau of Statistics, Census 2023. Karachi Division total population 20.3 million.",
     "sex_ratio": "CIA World Factbook 2024. Pakistan 65+: 0.87 male/female = 53.5% female. Total population: 1.04 male/female = 49.0% female. Karachi urban estimate applied.",
     "ethnicity": "Pakistan Bureau of Statistics, Census 2024. Ethnic groups in Karachi: Urdu-speaking (Muhajir) 50.6%, Pashtun 13.5%, Sindhi 11.1%, Punjabi 10.7%, Balochi 4.0%, other 10.1%. Source: Wikipedia, Ethnic groups in Karachi, citing 2024 Pakistani census.",
-    "age_distribution": "UN World Population Prospects 2024. Pakistan median age 20.8yr. ICU cohort age bands set per Promise Abegunde spec: 55% 65+, 45% 18-64 — not population-representative.",
+    "age_distribution": "UN World Population Prospects 2024. Pakistan median age 20.8yr. ICU cohort age bands set per internal cohort spec: 55% 65+, 45% 18-64 — not population-representative.",
     "infection_source_notes": "Pneumonia weighted higher than US profiles: Karachi urban air pollution burden (WHO Global Ambient Air Quality Database 2024), TB co-infection prevalence (Pakistan NTP Annual Report 2023), consistent with Rhee C et al. JAMA Intern Med 2017 base distribution adjusted for LMIC urban context."
   },
   "sex_ratio_female": 0.488,
@@ -18,7 +18,7 @@
     [18, 64, 0.45],
     [65, 90, 0.55]
   ],
-  "age_band_source": "Promise Abegunde cohort specification. Not population-representative of Karachi general population.",
+  "age_band_source": "Internal cohort specification. Not population-representative of Karachi general population.",
   "infection_source_modifier": {
     "pneumonia_boost": 0.06,
     "uti_reduction": 0.03,
@@ -27,7 +27,7 @@
   "known_limitations": [
     "Engine ethnicity schema does not support intra-Asian subgroup distinctions (Urdu/Pashtun/Sindhi/Punjabi/Balochi). All mapped to 'asian'.",
     "Sex ratio applied from national Pakistan data — Karachi-specific sex ratio by age not available in public datasets.",
-    "ICU age band (55% 65+) per Promise spec, not Karachi population pyramid (Pakistan median age 20.8yr means far fewer elderly in general population).",
+    "ICU age band (55% 65+) per internal spec, not Karachi population pyramid (Pakistan median age 20.8yr means far fewer elderly in general population).",
     "Sepsis infection source distribution adapted from US Rhee 2017 base with urban Pakistan adjustments — no Karachi-specific ICU sepsis source distribution available in published literature.",
     "Afebrile and AMS-only rates driven by age/comorbidity logic, not Pakistan-specific clinical data."
   ],

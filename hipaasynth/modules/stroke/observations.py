@@ -38,13 +38,13 @@ Key calibration sources:
       Sex-specific stroke risk; ~795,000 strokes/year US; 60k more women than men lifetime
   [9] Habibi-koolaee M et al. Neurol Res Int. 2018. doi:10.1155/2018/2709654
       Ischemic 70.7% vs hemorrhagic 29.3% (hospital-based); hypertension primary risk factor
-  [10] Faiyyaz Hangad, X-ray CT MRI. Clinical review 2026-04-30. HSX-STROKE-CALIB-001.
+  [10] Internal calibration review, 2026-04-30.
       SBP target 20-25% >185; onset-to-door IHS rural access gap 30-40% >270 min;
       prior ICH 2-5%; recent surgery 2-4%; mean age 65-68 for IHS stroke cohort.
   [11] Broderick JP et al. Stroke. 2010;41(9):2108-2129. doi:10.1161/STROKEAHA.107.183689
       AHA/ASA ICH management guidelines. Hemorrhagic strokes typically present more
       severely than ischemic; mean NIHSS ~13-15 in hospital-based ICH cohorts.
-  [12] Faiyyaz Hangad, X-ray CT MRI. Clinical review 2026-05-01. HSX-STROKE-CALIB-002.
+  [12] Internal calibration review, 2026-05-01.
       Hemorrhagic NIHSS conditioning (not conditional on type in v1.0.2);
       rural_presentation null when no profile loaded (config-level issue, not module).
 
