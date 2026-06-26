@@ -1,2 +1,2 @@
-# Python dependencies for HipAAsynth / Bulletproof_2
+# Python dependencies for HipAAsynth
 # Currently stdlib-only; add third-party packages here as needed.

@@ -49,7 +49,6 @@ from hipaasynth.validation.validator import validate_patient
 from hipaasynth.core.profile_loader import load_population_profile
 from hipaasynth.modules.sepsis.observations import build_sepsis_observations
 from hipaasynth.modules.stroke.observations import build_stroke_observations
-from hipaasynth.modules.stroke.observations import build_stroke_observations
 
 # Module version — must match anchor config for hash stability
 PIPELINE_MODULE_VERSION = "v1.0"

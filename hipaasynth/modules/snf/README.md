@@ -2,7 +2,7 @@
 
 ## Status: SOURCE LOST — OUTPUT PROVEN
 
-The SNF generator source code was lost when Replit billing lapsed before a git push.
+The SNF generator source code is maintained in the private research package.
 
 ## What exists
 
