@@ -7,7 +7,7 @@
     "sex_ratio": "StatisticsTimes 2024 citing UN data. Nigeria sex ratio 102.3 males per 100 females → female proportion 49.4%. Applied to Lagos urban population.",
     "ethnicity_Lagos": "World Population Review 2026. Lagos ethnic composition: Yoruba dominant (~60-65% Lagos State), Igbo (~15%), Hausa-Fulani (~10%), other groups ~15%. Engine maps all to 'black' (sub-Saharan African).",
     "ethnicity_Nigeria": "World Population Review 2026. Nigeria national: Hausa-Fulani 30%, Yoruba 15.5%, Igbo 15.2%, other 39.3%. CIA World Factbook 2024.",
-    "age_distribution": "UN World Population Prospects 2024 Revision. Nigeria median age 18.3 years (very young population). ICU cohort age bands per Promise Abegunde spec: 55% age 65+, 45% age 18-64.",
+    "age_distribution": "UN World Population Prospects 2024 Revision. Nigeria median age 18.3 years (very young population). ICU cohort age bands per internal cohort spec: 55% age 65+, 45% age 18-64.",
     "comorbidity_DM": "International Diabetes Federation (IDF) Diabetes Atlas 2021. Nigeria DM prevalence ~5.3% adults. Lagos urban higher ~7-9%.",
     "comorbidity_HTN": "Adeloye D et al. Prevalence and awareness of hypertension in Nigeria. J Hypertens. 2020. Urban Nigeria HTN ~30-35%.",
     "sepsis_ICU": "Murthy S et al. ICU capacity in low-income countries. PLoS One. 2015. Nigeria ICU beds ~0.07 per 100,000. Pneumonia leading sepsis source in sub-Saharan Africa.",

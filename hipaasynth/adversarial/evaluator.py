@@ -37,7 +37,7 @@ The Evaluator class accepts any callable ``model_fn(prompt: str) -> str``.
 This makes it backend-agnostic: pass an OpenAI, Anthropic, local LLM, or
 any other function.
 
-Vendor-specific wrappers (for example the Orinn API evaluator) live in the
+Vendor-specific wrappers (for example, proprietary LLM API evaluators) live in the
 ``hipaasynth-research`` package, not in the open-source engine.
 
 FAILURE DEFINITION
