@@ -199,7 +199,7 @@ def validate_oud(path):
     results.append(check("IV drug use (target 0.32)", pct(rows,"iv_drug_use",True), 0.32, tol=0.08))
 
     # MOUD treatment gap: ~78% untreated
-    results.append(check("No MOUD (treatment gap, target 0.78)", pct(rows,"moud_current","no_moud"), 0.78, tol=0.08))
+    results.append(check("No MOUD (treatment gap, target 0.78)", pct(rows,"moud_type","no_moud"), 0.78, tol=0.08))
 
     # Comorbidities
     results.append(check("OUD depression (target 0.55)",   pct(rows,"depression",True), 0.55, tol=0.10))

@@ -28,6 +28,19 @@ Generates deterministic synthetic CHF patient cohorts calibrated to:
 Focus: 30-day and 90-day readmission risk modeling
 CMS HRRP penalizes hospitals for excess HF readmissions (national ~22% 30-day rate)
 
+IMPORTANT — COHORT FRAMING:
+  This module simulates a HOSPITALIZED / ACUTE heart failure cohort, NOT a
+  community or outpatient HF population.  The NYHA severity distribution
+  (Class I: 8%, II: 9%, III: 54%, IV: 29%) is intentionally skewed toward
+  severe disease and directly mirrors the OPTIMIZE-HF registry of 48,612
+  hospitalized HF admissions (Fonarow GC et al. JAMA 2007;297(1):61-70).
+
+  Community HF prevalence studies show a much milder NYHA profile (~40-50%
+  Class I/II).  The Class III/IV predominance here is not a calibration
+  error — it correctly reflects the acuity of patients presenting for
+  inpatient care.  Do not compare these distributions to outpatient or
+  population-based HF registries.
+
 Engine: HipAAsynth v1.0.1
 Schema: v1.1.0
 Author: HipAAsynth / Cody Carlson
