@@ -510,7 +510,12 @@ def generate_oud_cohort(seed: int, n: int, label: str = "us_oud_national") -> tu
             "cows_score":           cows_score,
 
             # MOUD
-            "moud_current":         moud,
+            # moud_type: the specific medication (or "no_moud" if untreated)
+            # moud_current: clean boolean — True means the patient is on MOUD.
+            # Use moud_current for boolean checks; "no_moud" is truthy in Python
+            # and would silently count untreated patients as treated.
+            "moud_type":            moud,
+            "moud_current":         moud != "no_moud",
             "buprenorphine_dose_mgd": bup_dose_mgd,
             "methadone_dose_mgd":   meth_dose_mgd,
             "naloxone_access":      naloxone_access,
