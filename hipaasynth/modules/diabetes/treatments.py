@@ -170,15 +170,24 @@ class TreatmentGenerator:
                 p['on_sulfonylurea'] = True
 
         # Step 4: Insulin
-        if a1c > 10 or (a1c > 8.5 and duration > 10):
+        # Threshold A: very poor control → immediate insulin regardless of duration
+        # ADA Standards of Care 2024, Section 9 (pharmacologic approaches)
+        if a1c > 9.0:
             p['on_insulin'] = True
+            p['insulin_type'] = 'intensive' if a1c > 10.5 else 'basal'
+            p['number_of_injectables'] = 2 if a1c > 10.5 else 1
 
-            if a1c < 11:
+        # Threshold B: progressive beta-cell failure with long duration
+        # UKPDS showed ~50% of newly diagnosed T2DM required insulin within 10 years
+        # to maintain glycemic targets (Turner RC et al. JAMA 1999;281:2005-2012).
+        # NHANES 2013-2016: ~26% of adults with treated T2DM use insulin
+        # (Casagrande SS et al. Diabetes Care 2018;41:2020-2028).
+        elif a1c > 7.5 and duration > 10:
+            insulin_prob = min(0.60 + 0.025 * (duration - 10), 0.75)
+            if self.rng.random() < insulin_prob:
+                p['on_insulin'] = True
                 p['insulin_type'] = 'basal'
                 p['number_of_injectables'] = 1
-            else:
-                p['insulin_type'] = 'intensive'
-                p['number_of_injectables'] = 2
 
         # Counts
         p['number_of_oral_agents'] = sum([
