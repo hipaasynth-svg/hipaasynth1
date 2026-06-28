@@ -16,6 +16,8 @@
 
 """hipaasynth: synthetic clinical record generation engine."""
 
+from hipaasynth.psf import PSFGenerator, PSFAudit, PSFConfig, PSFResult, PSFReport, SPARSITY_LEVELS
+from hipaasynth.cc import CCGenerator, CCAudit, CCConfig, CCResult, CCReport, CONTINUITY_PROFILES
 from hipaasynth.core import (
     Anchor,
     build_metadata,
@@ -35,6 +37,18 @@ from hipaasynth.core import (
 )
 
 __all__ = [
+    "PSFGenerator",
+    "PSFAudit",
+    "PSFConfig",
+    "PSFResult",
+    "PSFReport",
+    "SPARSITY_LEVELS",
+    "CCGenerator",
+    "CCAudit",
+    "CCConfig",
+    "CCResult",
+    "CCReport",
+    "CONTINUITY_PROFILES",
     "Anchor",
     "build_metadata",
     "stamp_population",
