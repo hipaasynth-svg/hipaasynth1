@@ -23,7 +23,7 @@ from hipaasynth.core.config import GenerationConfig
 from hipaasynth.core.schema import Patient
 from hipaasynth.polymorphic import PolymorphicFormEngine
 from hipaasynth.polymorphic.metrics import PolymorphicMetricCalculator
-from hipaasynth.dif.model_interface import _ground_truth
+from hipaasynth.dif.model_interface import DecisionResult, _ground_truth
 from hipaasynth.dif.report import FairnessPassport
 
 
@@ -77,8 +77,23 @@ def run_audit(
     for patient in patients:
         forms = form_engine.express_all(patient)
         decisions: dict[str, bool] = {}
+        refused_forms: List[str] = []
+        unparseable_forms: List[str] = []
         for form in forms:
-            decisions[form["form"]] = bool(model.predict(patient, form))
+            form_name = form["form"]
+            result = model.predict(patient, form)
+            if isinstance(result, DecisionResult):
+                # Real-model adapters may return a structured result.  Never
+                # silently coerce a refusal or an unparseable response into a
+                # decision — record it explicitly instead.
+                if result.refused:
+                    refused_forms.append(form_name)
+                elif result.decision is None:
+                    unparseable_forms.append(form_name)
+                else:
+                    decisions[form_name] = bool(result.decision)
+            else:
+                decisions[form_name] = bool(result)
 
         gt = _ground_truth(patient)
         metrics = metric_calc.calculate(decisions, gt)
@@ -89,6 +104,8 @@ def run_audit(
             ground_truth=gt,
             decisions=decisions,
             metrics=metrics,
+            refused_forms=refused_forms,
+            unparseable_forms=unparseable_forms,
         )
         passports.append(passport)
 

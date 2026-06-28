@@ -1,5 +1,6 @@
 # HipAAsynth
 
+![Tests](https://github.com/hipaasynth-svg/HipAAsynth/actions/workflows/test.yml/badge.svg)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 
@@ -154,6 +155,8 @@ pip install -e '.[fhir]'
 | CAP pipeline (Bitcoin-anchored certification) | Closed | Proprietary |
 | FDA-Ready tier logic | Closed | Proprietary |
 | LLM evaluators, clinical harnesses | Closed | BSL 1.1 |
+
+For proprietary use without AGPL v3 obligations, see [COMMERCIAL-LICENSE.md](COMMERCIAL-LICENSE.md).
 
 The CAP pipeline — cryptographic hash chain, OpenTimestamps Bitcoin anchor, and live verification server — is proprietary. Vendors seeking a certified, independently verifiable FairnessPassport for regulatory submissions or hospital procurement use the CAP pipeline via [HipAAsynth.com](https://hipaasynth.com).
 
