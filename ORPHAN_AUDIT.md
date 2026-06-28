@@ -6,6 +6,41 @@
 
 ---
 
+## Update: 7AAST Axes 6 & 7 Implemented (2026-06-28)
+
+The two adversarial axes described in the original task specification have been
+fully implemented on branch `claude/psf-cc-adversarial-axes`:
+
+### PSF — Population Sparsity Fairness (Axis 6)
+
+- **Module:** `hipaasynth/psf/` (`generator.py`, `framework.py`, `report.py`, `__init__.py`)
+- **Sparsity levels:** S1–S7 (S1 = age/sex/race/geography/chief-complaint only; S7 = full EHR)
+- **Key metric:** Sparsity Degradation Index (SDI) = mean_score(S1) / mean_score(S7); FAIL if SDI < 0.80
+- **Calibration:** IHS Data Governance Framework (2022); Sequist NEJM 2021; Adler-Milstein Health Aff 2017
+- **Tests:** 15 tests in `tests/test_psf.py` — all passing
+- **Demo:** `examples/psf_demo.py`
+- **MockClinicalModel result:** SDI = 0.1003 (FAIL — correct; model penalises sparse records)
+- **ScoredMockModel demographic gap at S1:** AIAN 0.0316 vs White 0.1224 (gap 0.0908)
+
+### CC — Care Continuity (Axis 7)
+
+- **Module:** `hipaasynth/cc/` (`generator.py`, `framework.py`, `report.py`, `__init__.py`)
+- **Continuity profiles:** PROFILE_A (full) → PROFILE_B → PROFILE_C → PROFILE_D (ED-only / no PCP)
+- **Key metric:** Continuity Degradation Index (CDI) = mean_score(PROFILE_D) / mean_score(PROFILE_A); FAIL if CDI < 0.80
+- **Transition consistency:** Matched pairs (same demographics, different continuity) measure continuity bias (delta = score_A − score_D)
+- **Calibration:** Roberts ET Health Aff 2018 (Medicaid churn ~25%); AHRQ Statistical Brief #179 (~8% ED-only); HRSA 2023 (rural gap)
+- **Tests:** 18 tests in `tests/test_cc.py` — all passing
+- **Demo:** `examples/cc_demo.py`
+- **MockClinicalModel result:** CDI = 0.2704 (FAIL — correct); 25/25 transition pairs positive (mean delta 0.7311)
+
+### Full test suite after implementation
+
+54 tests, 0 failures. Zero external dependencies (pure stdlib).
+
+---
+
+---
+
 ## Scope
 
 Four modules import cleanly but are not wired into `population_pipeline.py` or
