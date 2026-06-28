@@ -20,7 +20,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from hipaasynth.polymorphic.metrics import PolymorphicMetrics
 
@@ -45,6 +45,8 @@ class FairnessPassport:
     fda_tplc_mapping: Dict[str, str] = field(default_factory=dict)
     eu_ai_act_mapping: Dict[str, str] = field(default_factory=dict)
     recommendations: List[str] = field(default_factory=list)
+    refused_forms: List[str] = field(default_factory=list)
+    unparseable_forms: List[str] = field(default_factory=list)
 
     @classmethod
     def build(
@@ -55,8 +57,16 @@ class FairnessPassport:
         ground_truth: bool,
         decisions: Dict[str, bool],
         metrics: PolymorphicMetrics,
+        refused_forms: Optional[List[str]] = None,
+        unparseable_forms: Optional[List[str]] = None,
     ) -> "FairnessPassport":
-        """Construct a fully populated passport with regulatory mappings."""
+        """Construct a fully populated passport with regulatory mappings.
+
+        ``refused_forms`` and ``unparseable_forms`` capture forms for which a
+        real-model adapter returned a refusal or an unparseable response.  They
+        are recorded verbatim rather than being coerced into a ``False``
+        decision, so they do not enter the ``decisions`` map or the metrics.
+        """
         fda = _fda_tplc_mapping(metrics)
         eu = _eu_ai_act_mapping(metrics)
         recs = _recommendations(metrics)
@@ -71,6 +81,8 @@ class FairnessPassport:
             fda_tplc_mapping=fda,
             eu_ai_act_mapping=eu,
             recommendations=recs,
+            refused_forms=list(refused_forms or []),
+            unparseable_forms=list(unparseable_forms or []),
         )
 
     def passed(self) -> bool:
@@ -99,6 +111,10 @@ class FairnessPassport:
             lines.append(
                 f"| {form_name} | {'Yes' if decision else 'No'} | {match} |"
             )
+        for form_name in sorted(self.refused_forms):
+            lines.append(f"| {form_name} | refused | — |")
+        for form_name in sorted(self.unparseable_forms):
+            lines.append(f"| {form_name} | unparseable | — |")
 
         lines += [
             "",

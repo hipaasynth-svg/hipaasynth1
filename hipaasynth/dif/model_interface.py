@@ -21,10 +21,68 @@ acute-condition ground truth (sepsis_flag or stroke_flag in ``observations``)
 and produce deterministic binary decisions for every polymorphic form.
 """
 
-from typing import Any
+from dataclasses import dataclass
+from typing import Any, Optional, Protocol, Union, runtime_checkable
 
 from hipaasynth.core.schema import Patient
 from hipaasynth.polymorphic.forms import Form
+
+
+@dataclass
+class DecisionResult:
+    """Structured result returned by real-model adapters.
+
+    Real models (LLMs, hosted clinical classifiers) do not always emit a clean
+    binary decision.  ``DecisionResult`` lets an adapter preserve the model's
+    raw output alongside the parsed decision so that ambiguous or refused
+    responses are never silently coerced into a ``True``/``False`` triage call.
+
+    Attributes:
+        raw_response: The verbatim text/output returned by the underlying model.
+        decision: The parsed binary triage decision, or ``None`` when the
+            response could not be parsed into an unambiguous decision.
+        refused: ``True`` if the model explicitly declined or refused to answer.
+        parse_confidence: Adapter confidence in the parse, in ``[0.0, 1.0]``.
+
+    The mock models (:class:`MockFairModel`, :class:`MockBiasedModel`) return
+    plain ``bool`` values and do **not** use this dataclass.  The DIF audit
+    layer accepts either a plain ``bool`` or a ``DecisionResult``.
+    """
+
+    raw_response: str
+    decision: Optional[bool]
+    refused: bool
+    parse_confidence: float
+
+
+@runtime_checkable
+class ClinicalModel(Protocol):
+    """Contract for any model audited by the DIF fairness framework.
+
+    A conforming model exposes a single ``predict`` method:
+
+        predict(patient, form) -> bool | DecisionResult
+
+    Contract:
+        - ``predict`` must return a binary acute-triage decision for the given
+          synthetic ``patient`` rendered in the given polymorphic ``form``.
+          ``True`` means *treat/escalate*; ``False`` means *do not*.
+        - The decision may be returned directly as a ``bool`` (as the reference
+          mock models do) or wrapped in a :class:`DecisionResult` so that the
+          raw model output is preserved.
+        - Real-model adapters must **never** silently coerce an ambiguous or
+          refused response into a decision.  When the underlying model is
+          unclear or declines to answer, the adapter must return a
+          :class:`DecisionResult` with ``decision=None`` (unparseable) or
+          ``refused=True`` rather than defaulting to ``False``.
+
+    :class:`MockFairModel` and :class:`MockBiasedModel` already satisfy this
+    contract by returning plain ``bool`` decisions.
+    """
+
+    def predict(self, patient: Patient, form: dict[str, Any]) -> Union[bool, DecisionResult]:
+        """Return an acute-triage decision for ``patient`` rendered as ``form``."""
+        ...
 
 
 def _ground_truth(patient: Patient) -> bool:
