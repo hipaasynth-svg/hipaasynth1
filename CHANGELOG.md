@@ -5,24 +5,89 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0]
+## [1.0.0] — 2026-06-29
 
-Initial public release of the HipAAsynth engine — the open-source (AGPL v3)
-fairness-testing core for clinical AI accountability.
+First stable release of the HipAAsynth engine — the open-source (AGPL v3)
+fairness-testing core for clinical AI accountability. This release marks the
+completion of the 7-Axis Adversarial Stress Test (7AAST) framework and a
+verified, fully reproducible calibration baseline.
 
 ### Added
 
-- **7-Axis Adversarial Stress Test (7AAST)** with all axes implemented.
-- **6 calibrated clinical modules**: sepsis, stroke, COPD, CHF, OUD, and diabetes.
+#### 7AAST framework
+
+- **7-Axis Adversarial Stress Test (7AAST)** completed — all seven axes
+  implemented and tested:
+  - Axes 1–4: polymorphic fairness metrics (DCS, ISG, LFDI, SAF) via the DIF
+    module.
+  - Axis 5: adversarial perturbation (noise injection, missingness, temporal
+    drift).
+  - **Axis 6 — PSF (Population Sparsity Fairness)**, new in this release.
+    Sparsity levels S1–S7; key metric Sparsity Degradation Index (SDI), FAIL if
+    SDI < 0.80. Calibrated to the IHS Data Governance Framework (2022), Sequist
+    (NEJM 2021), and Adler-Milstein (Health Aff 2017).
+  - **Axis 7 — CC (Care Continuity)**, new in this release. Continuity profiles
+    PROFILE_A through PROFILE_D; key metric Continuity Degradation Index (CDI),
+    FAIL if CDI < 0.80, plus matched-pair transition-consistency analysis.
+    Calibrated to Roberts (Health Aff 2018), AHRQ Statistical Brief #179, and
+    HRSA (2023).
+
+#### Clinical modules
+
+- **6 calibrated clinical modules**: Stroke, Sepsis, COPD, CHF, OUD, and
+  Diabetes. Each generates deterministic synthetic cohorts from anchor seeds.
+
+#### Polymorphic engine and fairness audit
+
 - **Polymorphic form engine** rendering each synthetic patient in 7 distinct
-  documentation forms.
-- **DIF fairness audit** producing a per-patient FairnessPassport with 4 metrics:
-  DCS (Decision Consistency Score), ISG (Information-Source Gradient),
-  LFDI (Linguistic-Form Disadvantage Index), and SAF (SDoH Amplification Factor).
-- **PSF (Population Stability)** and **CC (Consistency Checker)** adversarial axes.
-- **Adversarial perturbations**: noise injection, missingness, and temporal drift.
-- **Regulatory mapping** to FDA Total Product Life Cycle (TPLC) and the EU AI Act.
+  documentation forms (FHIR structured, physician SOAP, mid-level abbreviated,
+  patient high-literacy, patient low-literacy, LEP-translated, and CHW SDoH-rich).
+- **DIF fairness audit** producing a per-patient FairnessPassport with four
+  metrics: DCS (Decision Consistency Score), ISG (Information-Source Gradient),
+  LFDI (Linguistic-Form Disadvantage Index), and SAF (SDoH Amplification Factor),
+  each with a pass/fail determination.
+- **Regulatory mapping** to the FDA Total Product Life Cycle (TPLC) framework and
+  the EU AI Act.
 - **Exporters** for JSON, CSV, and FHIR R5.
-- **54 automated tests** with zero external dependencies (pure Python standard library).
+
+#### Calibration
+
+- **17/17 calibration targets verified** against published reference
+  distributions (CDC BRFSS, ACS, and IHS benchmarks), confirming that synthetic
+  cohort distributions match their real-world anchors within tolerance.
+
+#### Testing and architecture
+
+- **54 automated tests passing**, 0 failures.
+- **Zero external dependencies** — the engine runs on the pure Python standard
+  library. This is enforced in CI by an AST-based import check that fails the
+  build if any non-stdlib import is introduced.
+
+### Infrastructure
+
+- **GitHub branch protection and CI** configured. The `test.yml` workflow runs
+  the full test suite on Python 3.11 and 3.12 and enforces the zero-external-
+  dependency invariant on every push and pull request.
+- **Privacy and professionalism audit completed.** The codebase contains no
+  named individuals and no real facilities — only synthetic populations and
+  region-level population anchors.
+
+### Release provenance
+
+- This v1.0.0 release is timestamped via **OpenTimestamps Bitcoin anchoring** as
+  part of the **CAP (Certification Artifact Pipeline)**. The release artifact is
+  fixed to a **SHA-256 anchor chain** and anchored to the Bitcoin blockchain,
+  producing an independently verifiable proof of existence for the release.
+  (The CAP pipeline itself is offered as a proprietary certification service and
+  is not part of this open-source repository — see `README.md`.)
+
+### Licensing
+
+- **Dual-license model.** The engine and all core modules are published under
+  **AGPL-3.0**. A **commercial license** is available for organizations that
+  cannot meet the AGPL v3 source-disclosure obligations — see
+  [COMMERCIAL-LICENSE.md](COMMERCIAL-LICENSE.md).
 
 [1.0.0]: https://github.com/hipaasynth-svg/HipAAsynth/releases/tag/v1.0.0
+</content>
+</invoke>
