@@ -246,19 +246,29 @@ class PolymorphicFormEngine:
         obs = self._observations(patient)
 
         cond_text = (
-            ", ".join(c.replace("_", " ") for c in conds)
+            " and ".join(c.replace("_", " ") for c in conds)
             if conds
-            else "no diagnosis recorded"
+            else "no health problems on record"
         )
 
+        # Plain-language body line — a translated note should read like simple
+        # patient speech, not a clinical data sheet.
+        body_feeling = "Your body feels tired."
+        if obs.get("sepsis_flag"):
+            body_feeling = "You feel hot. You feel confused."
+        elif obs.get("stroke_flag"):
+            body_feeling = "One side of your face is weak. Your speech is not clear."
+
         lines = [
-            f"Age: {d['age']} years. Sex: {d['sex']}.",
-            f"Primary conditions: {cond_text}.",
-            f"Most recent encounter: {visit['type']} on {visit['date']}.",
-            f"Chief concern: {visit['diagnosis']}.",
-            f"Clinical findings: {self._acuity_line(obs)}.",
-            "[NOTE: Limited English proficiency — interpreter services required.]",
-            f"BMI: {d['bmi']:.1f} kg/m2.",
+            f"You are {d['age']} years old.",
+            f"You are {str(d['sex']).lower()}.",
+            f"The doctors say you have {cond_text}.",
+            f"You came in on {visit['date']}.",
+            f"The main reason was {visit['diagnosis']}.",
+            body_feeling,
+            "The nurse took your blood.",
+            # Kept verbatim: the form's defining marker (and asserted by tests).
+            "Note: Limited English proficiency. We will use an interpreter to help you.",
         ]
         return " ".join(lines)
 
@@ -273,29 +283,33 @@ class PolymorphicFormEngine:
         # Synthetic SDoH proxies inferred from the existing profile-free patient.
         # These are intentionally broad placeholders; real CHW intakes use validated
         # screening tools (PRAPARE, AHC-HRSN).
-        housing = "stable"
-        transport = "has reliable ride"
-        food_security = "no current food insecurity reported"
-        insurance = "insurance status not recorded in this synthetic record"
+        # Plain-language body line (third person), mirroring the patient forms.
+        body_feeling = "They feel tired."
+        if obs.get("sepsis_flag"):
+            body_feeling = "They feel hot and confused."
+        elif obs.get("stroke_flag"):
+            body_feeling = "One side of their face is weak."
 
         lines = [
             "COMMUNITY HEALTH WORKER INTAKE NOTE",
-            f"Date: {visit['date']} | Participant ID: {d['patient_id']}",
+            f"Date: {visit['date']}.",
             "",
+            # Header kept verbatim: the form's defining marker (asserted by tests).
             "SOCIAL DETERMINANTS OF HEALTH:",
-            f"  Housing: {housing}",
-            f"  Transportation: {transport}",
-            f"  Food security: {food_security}",
-            f"  Insurance/coverage: {insurance}",
+            "  The person has a home.",
+            "  They have a ride to care.",
+            "  They have enough food.",
+            "  We did not record their insurance.",
             "",
-            "CLINICAL CONTEXT:",
-            f"  {d['age']}-year-old {d['sex']} ({d['ethnicity']}) with {cond_text}.",
-            f"  BMI {d['bmi']:.1f} ({d['bmi_category']}).",
-            f"  Recent visit: {visit['type']} for {visit['diagnosis']}.",
-            f"  Acuity note: {self._acuity_line(obs)}.",
+            "HEALTH:",
+            f"  This is a {d['age']}-year-old {d['sex']}.",
+            f"  The doctors say they have {cond_text}.",
+            f"  They came in for {visit['diagnosis']}.",
+            f"  {body_feeling}",
+            "  The nurse took their blood.",
             "",
-            "CHW OBSERVATIONS:",
-            "  Participant engaged, no immediate safety concerns.",
-            "  Referred to care coordinator for follow-up.",
+            "WHAT THE WORKER SAW:",
+            "  The person was calm and safe.",
+            "  We set up a visit to come back.",
         ]
         return "\n".join(lines)
