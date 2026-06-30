@@ -4,11 +4,11 @@
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 
-**Evidentiary infrastructure for clinical AI accountability.**
+**Open-source fairness-testing for clinical AI — reproducible, inspectable, vendor-neutral.**
 
-HipAAsynth is an open-source fairness testing engine for clinical AI. It generates synthetic patients from populations that have never appeared in any health dataset — rural, tribal, uninsured, aging, non-English-speaking — and stress-tests clinical AI models across seven distinct patient presentations of the same case.
+HipAAsynth is an open-source fairness testing engine for clinical AI. It generates synthetic patients from populations that are under-represented in standard validation datasets — rural, tribal, uninsured, aging, non-English-speaking — and stress-tests clinical AI models across seven distinct patient presentations of the same case.
 
-The output is a **FairnessPassport**: a structured, independently verifiable record of how a model performed across every presentation. Not a benchmark score. A defensible evidentiary artifact.
+The output is a **FairnessPassport**: a structured, reproducible record of how a model performed across every presentation. Not a benchmark score — a testing record that organizations may use as part of their own validation evidence.
 
 ---
 
@@ -50,7 +50,7 @@ The same synthetic patient is rendered in seven distinct clinical documentation 
 | `MIDLEVEL_ABBREVIATED` | Telegraphic, time-pressed documentation |
 | `PATIENT_HIGH_LITERACY` | Lay medical terms, first-person, pain scale |
 | `PATIENT_LOW_LITERACY` | Metaphorical, somatic, no medical terminology |
-| `LEP_TRANSLATED` | Simplified/broken English, gesture references |
+| `LEP_TRANSLATED` | Plain, simplified English; short sentences |
 | `CHW_SDOH_RICH` | Community health worker intake with full SDoH context |
 
 ### The FairnessPassport
@@ -63,8 +63,8 @@ Every audit produces a `FairnessPassport` per patient — a structured artifact 
   - **ISG** — Information-Source Gradient
   - **LFDI** — Linguistic-Form Disadvantage Index
   - **SAF** — SDoH Amplification Factor
-- FDA Total Product Life Cycle (TPLC) compliance mapping
-- EU AI Act compliance mapping
+- FDA Total Product Life Cycle (TPLC) compliance-context mapping (heuristic, non-binding)
+- EU AI Act compliance-context mapping (heuristic, non-binding)
 - Remediation recommendations
 
 The FairnessPassport is the answer to *"what did you do to verify this model?"*
@@ -75,9 +75,25 @@ The FairnessPassport is the answer to *"what did you do to verify this model?"*
 
 Anyone.
 
-The engine and all core modules are published under AGPL v3. The methodology is open, inspectable, and reproducible. Any researcher, regulator, or opposing counsel can verify the methodology without contacting us.
+The engine and all core modules are published under AGPL v3. The methodology is open, inspectable, and reproducible. Any researcher or regulator can independently reproduce the methodology without contacting us.
 
 This is a structural answer to the most important question in third-party auditing. The defense is not "trust HipAAsynth." The defense is "here is the methodology — verify it yourself."
+
+---
+
+## What HipAAsynth is / is not
+
+**What HipAAsynth is**
+- An open-source engine that generates deterministic synthetic patients and tests a model's decision consistency across seven documentation styles of the same case.
+- A producer of structured, reproducible `FairnessPassport` records.
+- A methodology any third party can inspect and re-run.
+
+**What HipAAsynth is not**
+- Not a regulatory body, accreditation, or certification.
+- Not an FDA / EU / CMS submission, and not a guarantee of clearance or payment.
+- Not a legal opinion or evidence of compliance.
+- Not a source of real patient data, and not a substitute for clinical validation on real-world populations.
+- Not a guarantee that a model is fair — it surfaces specific, defined fairness signals only.
 
 ---
 
@@ -148,8 +164,8 @@ pip install -e '.[fhir]'
 | Component | Status | License |
 |-----------|--------|---------|
 | Population engine | Open | AGPL v3 |
-| PSF module (Population Stability) | Open | AGPL v3 |
-| CC module (Consistency Checker) | Open | AGPL v3 |
+| PSF module (Population Sparsity Fairness) | Open | AGPL v3 |
+| CC module (Care Continuity) | Open | AGPL v3 |
 | DIF module (Differential Impact Framework) | Open | AGPL v3 |
 | Polymorphic layer (7 forms + metrics) | Open | AGPL v3 |
 | CAP pipeline (Bitcoin-anchored certification) | Closed | Proprietary |
@@ -158,7 +174,7 @@ pip install -e '.[fhir]'
 
 For proprietary use without AGPL v3 obligations, see [COMMERCIAL-LICENSE.md](COMMERCIAL-LICENSE.md).
 
-The CAP pipeline — cryptographic hash chain, OpenTimestamps Bitcoin anchor, and live verification server — is proprietary. Vendors seeking a certified, independently verifiable FairnessPassport for regulatory submissions or hospital procurement use the CAP pipeline via [HipAAsynth.com](https://hipaasynth.com).
+The CAP pipeline — cryptographic hash chain, OpenTimestamps Bitcoin anchor, and live verification server — is a separate proprietary service. It provides timestamped provenance for a FairnessPassport; it is not a regulatory certification, and the open engine does not itself certify, attest, or make any regulatory determination. Organizations seeking timestamped provenance for procurement or their own submission packages can use the CAP pipeline via [HipAAsynth.com](https://hipaasynth.com).
 
 AGPL v3 means: any organization embedding this engine in a commercial product must either open-source their full stack or obtain a commercial license.
 
@@ -172,12 +188,14 @@ Proprietary research extensions — including LLM evaluators, clinical validatio
 
 ## Regulatory context
 
-This engine produces testing evidence relevant to:
+HipAAsynth is a testing tool — not a regulatory body, certification, or legal opinion. It makes no compliance determination; responsibility for any regulatory submission remains with the submitting organization.
 
-- **FDA SaMD** — pre-specified performance testing across demographic subgroups for 510(k) submissions
-- **EU AI Act** — conformity assessment and robustness documentation for high-risk clinical AI
-- **CMS NTAP** — competitive validation evidence for New Technology Add-on Payment applications
-- **Post-market surveillance** — quarterly re-audit capability for model drift detection
+Within that scope, the engine produces structured fairness-testing output that organizations *may use as one input within* processes such as:
+
+- **FDA SaMD** — subgroup performance-consistency testing that may support a 510(k) evidence package
+- **EU AI Act** — robustness and subgroup-consistency documentation that may support conformity-assessment activities for high-risk clinical AI
+- **CMS NTAP** — supplementary validation output applicants may include in New Technology Add-on Payment materials
+- **Post-market surveillance** — repeatable re-audit capability that may support model-drift monitoring
 
 ---
 
